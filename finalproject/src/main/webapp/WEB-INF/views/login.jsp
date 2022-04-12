@@ -42,7 +42,7 @@
 
   <body>
     <!-- header import -->
-    <%@ include file="/WEB-INF/views/include/header.jsp" %>
+    <!-- <%@ include file="/WEB-INF/views/include/header.jsp" %> -->
     <!-- end of header import -->
 
     <section>
@@ -85,7 +85,7 @@
     </section>
 
     <!-- footer import -->
-    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+   <!--   <%@ include file="/WEB-INF/views/include/footer.jsp" %> -->
     <!-- end of footer import -->
   </body>
 </html>

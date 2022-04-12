@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.health.controller.MemberController;
+import com.health.controller.ProductController;
 import com.health.dao.MemberDAO;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = MemberController.class)
 @MapperScan(basePackageClasses = MemberDAO.class)
 public class FinalprojectApplication {
 

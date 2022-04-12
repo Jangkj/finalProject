@@ -4,9 +4,7 @@
   <!-- mybatis db 연결정보 세팅 파일 -->
 <configuration>
 <!-- 1. sql 실행 결과 XXXDTO 매핑 -->
-<typeAliases>
-	<typeAlias type="com.health.dto.MemberDTO" alias="memberdto"/>
-</typeAliases>
+
 
 
 </configuration>
