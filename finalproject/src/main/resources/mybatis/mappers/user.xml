@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.health.mapper.UserMapper">
+	<select id="Userlist" resultType="User">
+		SELECT * FROM member_table
+	</select>
+
+	<select id="readUser" parameterType="String" resultType="User">
+		SELECT * FROM member_table WHERE m_mail = #{m_mail}
+	</select>
+
+	<select id="readAuthority" parameterType="String" resultType="String">
+          SELECT authority_name FROM authority WHERE m_mail = #{m_mail}
+     </select>
+
+	<insert id="createUser" parameterType="User">
+		INSERT INTO member_table (m_num, m_mail, m_pw, m_name, isAccountNonExpired,
+		isAccountNonLocked, isCredentialsNonExpired, isEnabled, m_hp, m_add, m_date)
+		
+		VALUES (#{m_num}, #{m_mail}, #{m_pw}, #{m_name}, #{isAccountNonExpired},
+		#{isAccountNonLocked}, #{isCredentialsNonExpired}, #{isEnabled}, #{m_hp}, #{m_add}, #{m_date})
+	</insert>
+
+	<insert id="createAuthority"
+		parameterType="org.springframework.security.core.GrantedAuthority">
+		INSERT INTO authority (m_mail, authority_name)
+		VALUES
+		<foreach item="item" collection="authorities" separator=",">
+			(#{m_mail}, #{item.authority})
+		</foreach>
+	</insert>
+
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM member_table WHERE m_mail = #{m_mail}
+	</delete>
+
+	<delete id="deleteAuthority" parameterType="String">
+		DELETE FROM authority WHERE m_mail = #{m_mail}
+	</delete>
+</mapper>

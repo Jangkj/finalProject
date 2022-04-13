@@ -1,43 +1,45 @@
 package com.health.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.health.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	UserService userService;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.authorizeRequests()
-				.antMatchers("/", "/home").permitAll()
-				.anyRequest().authenticated()
-				.and()
-			.formLogin()
-				.loginPage("/login")
-				.permitAll()
-				.and()
-			.logout()
-				.permitAll();
+		http.authorizeRequests()
+			.antMatchers("/user/admin/**").access("hasAuthority('ADMIN')")
+			.antMatchers("/user/myinfo").access("hasAuthority('USER')") // 페이지 권한 설정
+			.antMatchers("/", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
+			.anyRequest().authenticated()
+			.and()
+			.formLogin().loginPage("/user/loginPage")
+			.loginProcessingUrl("/login")
+			.defaultSuccessUrl("/user/login/result")
+			.permitAll() // 로그인 설정
+			.and()
+			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) // 로그아웃 설정
+			.logoutSuccessUrl("/user/logout/result").invalidateHttpSession(true)
+			.and()
+			.exceptionHandling().accessDeniedPage("/user/denied") // 403 예외처리 핸들링
+			.and()
+			.csrf().disable();
 	}
 
-	@Bean
 	@Override
-	public UserDetailsService userDetailsService() {
-		UserDetails user =
-			 User.withDefaultPasswordEncoder()
-				.username("user")
-				.password("password")
-				.roles("USER")
-				.build();
-
-		return new InMemoryUserDetailsManager(user);
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userService).passwordEncoder(userService.passwordEncoder());
 	}
 }
