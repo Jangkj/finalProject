@@ -18,6 +18,7 @@ import com.health.service.UserServiceImpl;
 
 @Controller
 public class UserController {
+	
 	@Autowired
 	UserMapper userMapper;
 

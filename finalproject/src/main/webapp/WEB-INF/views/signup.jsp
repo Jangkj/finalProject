@@ -14,7 +14,7 @@
     <h1>회원 가입</h1>
     <hr>
 	<form action="/user/signup" method="post">
-        <input type="text" name="m_mail" placeholder="이메일 입력해주세요"><br>
+        <input type="text" name="m_mail" placeholder="이메일을 입력해주세요"><br>
         <input type="password" name="m_pw" placeholder="비밀번호"><br>
         <input type="text" name="m_name" placeholder="이름"><br>
         <input type="hidden" name="isAccountNonExpired" value="true">
