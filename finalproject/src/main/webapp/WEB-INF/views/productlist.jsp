@@ -48,7 +48,7 @@
                               <td><a href ="productdetail?num=${dto.prod_num }">${dto.prod_num }   </a></td> 
                               <td><a href ="productdetail?num=${dto.prod_num }">${dto.prod_title } </a></td>
                               <td><a href ="productdetail?num=${dto.prod_num }">${dto.prod_price } </a></td>
-                              <td><a href ="productdetail?num=${dto.prod_num }">${dto.prod_img }   </a></td>
+                              <td><a href ="productdetail?num=${dto.prod_num }">${dto.prod_img_name }   </a></td>
                               <td><a href ="productdetail?num=${dto.prod_num }">${dto.prod_inventory} </a></td>
                            </tr>
                           

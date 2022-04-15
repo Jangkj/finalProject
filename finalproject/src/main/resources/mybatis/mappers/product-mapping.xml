@@ -9,7 +9,7 @@
 
 <select id="selectProductCount" resultType="int">
  		<![CDATA[
- 			select count(*) from(select prod_num, prod_title, prod_price, prod_inventory, prod_img , prod_description from
+ 			select count(*) from(select prod_num, prod_title, prod_price, prod_inventory, prod_img_name , prod_description from
  		product_table )prod where prod_title like'%${search_text}%' or prod_price like'%${search_text}%' 
  		]]>
 	</select>
