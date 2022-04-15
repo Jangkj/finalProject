@@ -18,14 +18,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.health.service.UserService;
+import com.health.service.MemberService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	UserService userService;
+	MemberService userService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

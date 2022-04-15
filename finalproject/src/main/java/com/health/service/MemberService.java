@@ -2,15 +2,16 @@ package com.health.service;
 
 import java.util.Collection;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.health.domain.User;
+import com.health.dto.MemberDto;
 
-public interface UserService extends UserDetailsService {
+public interface MemberService extends UserDetailsService {
      Collection<GrantedAuthority> getAuthorities(String m_mail);
-     public void createUser(User user);
+     public void createUser(MemberDto dto);
      public void deleteUser(String m_mail);
-     public PasswordEncoder passwordEncoder();
+     public PasswordEncoder passwordEncoder();     
 }

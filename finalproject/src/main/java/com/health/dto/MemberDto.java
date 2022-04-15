@@ -1,11 +1,11 @@
-package com.health.domain;
+package com.health.dto;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class User implements UserDetails {
+public class MemberDto implements UserDetails {
 	
 	private static final long serialVersionUID = 5177294317961485740L;
 
@@ -112,7 +112,7 @@ public class User implements UserDetails {
 				+ isCredentialsNonExpired + ", isEnabled=" + isEnabled + "]";
 	}
 
-	public User(String m_mail, String m_pw, String m_name, boolean isAccountNonExpired, boolean isAccountNonLocked,
+	public MemberDto(String m_mail, String m_pw, String m_name, boolean isAccountNonExpired, boolean isAccountNonLocked,
 			boolean isCredentialsNonExpired, boolean isEnabled) {
 		super();
 		this.m_mail = m_mail;

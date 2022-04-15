@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,20 +15,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
-import com.health.domain.User;
-import com.health.mapper.UserMapper;
+import com.health.dao.MemberDao;
+import com.health.dto.MemberDto;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class MemberServiceImpl implements MemberService {
 
 	@Autowired
-	UserMapper userMapper;
-	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	MemberDao userMapper;
+	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();	
 
 	@Override
-	public UserDetails loadUserByUsername(String m_mail) throws UsernameNotFoundException {
-		User user = userMapper.readUser(m_mail);
+	public UserDetails loadUserByUsername(String m_mail) throws UsernameNotFoundException { //principal 객체 - 로그아웃성공시 제거됨
+		MemberDto user = userMapper.readUser(m_mail);
 		if(user==null) {
 			throw new UsernameNotFoundException(m_mail);
 		}
@@ -43,12 +47,12 @@ public class UserServiceImpl implements UserService {
    }
 
 	@Override
-	public void createUser(User user) {
-		String rawPassword = user.getPassword();
+	public void createUser(MemberDto dto) {
+		String rawPassword = dto.getPassword();
 		String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
-		user.setPassword(encodedPassword);
-		userMapper.createUser(user);
-		userMapper.createAuthority(user);
+		dto.setPassword(encodedPassword);
+		userMapper.createUser(dto);
+		userMapper.createAuthority(dto);
 	}
 
 	@Override
@@ -61,4 +65,7 @@ public class UserServiceImpl implements UserService {
 	public PasswordEncoder passwordEncoder() {
 		return this.passwordEncoder;
 	}
+
+	
+	
 }

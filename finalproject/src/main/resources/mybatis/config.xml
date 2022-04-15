@@ -5,8 +5,7 @@
 <configuration>
 <!-- 1. sql 실행 결과 XXXDTO 매핑 -->
 <typeAliases>
-	<typeAlias type="com.health.dto.MemberDTO" alias="memberdto"/>
-	<typeAlias type="com.health.domain.User" alias="domain"/>
+	<typeAlias type="com.health.dto.MemberDto" alias="memberdto"/>	
 </typeAliases>
 
 
