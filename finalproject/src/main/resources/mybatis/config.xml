@@ -6,6 +6,8 @@
 <!-- 1. sql 실행 결과 XXXDTO 매핑 -->
 <typeAliases>
 	<typeAlias type="com.health.dto.MemberDTO" alias="memberdto"/>
+	<typeAlias type="com.health.dto.ExercisetypeDTO" alias="exercisetypedto"/>
+	<typeAlias type="com.health.dto.RoutineDTO" alias="routinedto"/>
 </typeAliases>
 
 
