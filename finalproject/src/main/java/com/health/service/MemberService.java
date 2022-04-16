@@ -13,5 +13,6 @@ public interface MemberService extends UserDetailsService {
      Collection<GrantedAuthority> getAuthorities(String m_mail);
      public void createUser(MemberDto dto);
      public void deleteUser(String m_mail);
-     public PasswordEncoder passwordEncoder();     
+     public PasswordEncoder passwordEncoder();
+     public MemberDto getInfo(String m_mail);
 }

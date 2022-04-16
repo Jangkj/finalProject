@@ -21,9 +21,6 @@ import com.health.service.MemberServiceImpl;
 public class MemberController {
 	
 	@Autowired
-	MemberDao dao;
-
-	@Autowired
 	MemberServiceImpl memberservice;
 
     // 메인 페이지
@@ -47,7 +44,7 @@ public class MemberController {
 		authorities.add(new SimpleGrantedAuthority("USER"));
 		dto.setAuthorities(authorities);
     	memberservice.createUser(dto);
-        return "redirect:/user/login";
+        return "redirect:/user/loginPage";
     }
 
     // 로그인 페이지
@@ -59,7 +56,8 @@ public class MemberController {
     // 로그인 결과 페이지
     @GetMapping("/user/login/result")
     public String dispLoginResult() {
-        return "loginSuccess";
+    	
+        return "index"; //loginSuccess
     }
 
     // 로그아웃 결과 페이지
@@ -77,7 +75,7 @@ public class MemberController {
     // 내 정보 페이지
     @GetMapping("/user/info")
     public String memberview(String m_mail, Model model) {
-    	model.addAttribute("dto", dao.readUser(m_mail));
+		model.addAttribute("dto", memberservice.getInfo(m_mail));
         return "myinfo";
     }
         

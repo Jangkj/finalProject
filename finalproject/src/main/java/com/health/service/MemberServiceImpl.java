@@ -66,6 +66,11 @@ public class MemberServiceImpl implements MemberService {
 		return this.passwordEncoder;
 	}
 
+	@Override
+	public MemberDto getInfo(String m_mail) {
+		return userMapper.readUser(m_mail);		
+	}
+
 	
 	
 }

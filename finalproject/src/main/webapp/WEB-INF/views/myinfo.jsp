@@ -12,9 +12,25 @@
 <body>
     <h1>내정보 확인 페이지입니다.</h1>
     <hr>
-	<p>${dto.m_mail }</p>
-	<div class="label">아이디</div>
-	<input name="m_mail" value="${m_mail }" class="infobox" readonly />
+    
+    
+    
+    
+    <sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal" var="user" />
+	</sec:authorize>
+	
+	
+	
+    <p>${user.m_num }</p>
+    <p>${user.username }</p>
+    <p>${user.password }</p>
+    <p>${user.m_name }</p>    
+    <p>${user.m_hp }</p>
+	<p>${user.m_post }</p>
+	<p>${user.m_add1 }</p>
+	<p>${user.m_add2 }</p>
+	<p>${user.m_date }</p>
 			
     
 
