@@ -8,40 +8,29 @@
  select * from exercisetype_table
 </select>
 
-<insert id="insertexercisetype" parameterType="exercisetypedto">
- insert into exercisetype_table values(#{et_num},#{et_name},#{et_ename},#{et_met},#{et_time},#{et_img1},#{et_img2},#{et_img3},#{et_description},#{ec_num})
-</insert>
-
-<update id="updateexercisetype" parameterType="exercisetypedto">
-	update exercisetype_table
-	set et_name=#{et_name} , et_met=#{et_met}
-	where et_name=#{et_name}
-</update>
-
-<delete id="deleteexercisetype" parameterType="String" >
-	delete from exercisetype_table where et_ename=#{i}
-</delete>
-
-<select id="exercisetype" resultType="exercisetypedto" parameterType="String">
-	select * from exercisetype_table where et_ename=#{et_ename}
-</select>
-
-<!-- parameterType="int[]" 생략 가능 -->
-<select id="exercisetypepaginglist" resultType="exercisetypedto" >
-select * from exercisetype_table limit 
-	<foreach collection="array" item="num" separator="," >
-	 	#{num}
-	</foreach>
-</select>
-
 
 <select id="exercisetyperesssearch" resultType="exercisetypedto" >
-select * from exercisetype_table where et_ename in 
+select * from exercisetype_table where et_num in 
 <foreach collection="array" item="add" open="("  close=")"  separator=",">
 	#{add}
 </foreach>
 </select>
+
+<select id="exercisetypename" resultType="exercisetypedto" parameterType="String">
+	select * from exercisetype_table where et_ename=#{et_ename}
+</select>
+
+<select id="exercisetypenum" resultType="exercisetypedto" parameterType="int">
+	select * from exercisetype_table where et_num=#{et_num}
+</select>
+
 </mapper>
+
+
+
+
+
+
 
 
 

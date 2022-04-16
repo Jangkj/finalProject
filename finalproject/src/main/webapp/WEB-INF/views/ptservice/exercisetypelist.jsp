@@ -11,40 +11,83 @@
 <script src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var sendMsg = [];
-	var sendMsg2 = [1,2,3];
-	$(".click").on('click', function(){//선택운동목록나타냄
-		var getClass=$(this).attr("id");
-		sendMsg.push(getClass);
+	var setCookie = function(name, value, exp) {
+		var date = new Date();
+		date.setTime(date.getTime() + exp*24*60*60*1000);
+		document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+	};
+	var deleteCookie = function(name) {
+		document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+	};
+	$(document).on("click", ".click,.delect", function(){//선택운동목록전송
+		var event1 = $(this).attr("id"); 
+		var event = $(this).attr("class");
+		console.log(event1);
 		$.ajax({
-		    url : "exercisetypepick",              
+		    url : "exerciselist",              
 		    type : 'POST',          
-		    traditional : true,
-		    data : {
-		        sendMsg : sendMsg  
-		    },
-		    success :  function(list){ 
-		    	ptroutine_pick="<form action='exerciselist' method = 'post'>루틴이름: <input type='text' name='rs_name'><br>";
-				for(var i = 0; i < list.length; i++){
-					ptroutine_pick+=
-					"<div><input type='hidden' id='gameToken' name='routine"+i+"' value='list[i].et_ename'>운동이름 :"+list[i].et_name 
-					+",영문명 :"+list[i].et_ename
-					+" met :"+list[i].et_met 
-					+" 운동레벨 :"+list[i].et_lv 
-					+" 운동시간 :"+ list[i].et_time
-					+" 소모칼로리 :"+ list[i].et_time
-					+"<input type='number' name='time"+i+"' value='"+list[i].et_num+"' min='0' max='100'><a>삭제하기</a><div>";
-				};
-				ptroutine_pick +="<input type='submit' value='루틴 생성하기'>";
-				$("#pick_et").html(ptroutine_pick);
-			}//success end	
-		});	
-	});//on end	
+		    dataType: 'json',
+		    success :  function(ptcart){ 
+		    	var table = "<table border=3>루틴명:<input type='text' name= pr_info>";
+				for(var i = 0; i < ptcart.length; i++){
+					table +="<tr><td>" + ptcart[i].et_num + "<td>"
+					+ptcart[i].et_name+"<td>"
+					+ptcart[i].et_time+"<td>"
+					+"<input type='number' name="+ptcart[i].et_ename+" min='0' max='100'><td>"
+					+"<p class ='delect' id=d"+ptcart[i].et_ename+">삭제하기</p></td></tr>";
+				}//for
+				table +="</table><input class='add' type=button value='등록'>";
+				$("#ptcart").html(table);
+			}//success
+		});
+		if(event == "click"){
+			setCookie(event1,10, 1);
+		}
+		if(event == "delect"){
+			var delectevent = event1.substr(1);
+			deleteCookie(delectevent);
+		}
+	});
+		/*  $(document).on("click", ".click", function(){
+			var exercisetypepick = $(this).attr("id");
+			$.ajax({
+				url: "exercisetypepick",
+				data : {'exercisetypepick':exercisetypepick}, 
+				type : 'get',
+				dataType: 'json',
+				success : function(){
+				}
+			});
+		}); */
+		/* $(document).on("click", ".delect", function(){
+			var a = $(this).attr("id");
+			$.ajax({
+				url: "ptcartdelect",
+				data : {'ptcartdelect':a} , 
+				type : 'get',
+				dataType: 'json',
+				success : function(){
+				}//success end	
+			});//ajax end
+		}); 
+		$(document).on("click", ".add", function(){
+			$.ajax({
+				url: "routinadd",
+				data : {'ptcartdelect':a} , 
+				type : 'get',
+				dataType: 'json',
+				success : function(){
+				}//success end	
+			});//ajax end
+		});	 */
 });
 </script>
 <div id="pick_et"></div>
+<div id="ptcart">선택한 상품은 여기에 표시됩니다</div>
 <c:forEach items="${exercisetypelist}" var="dto" >
-	<p><img src="images/${dto.et_img1}.jpg"  width="300">운동이름 : ${dto.et_name}, 운동레벨 : ${dto.et_lv}운동시간:${dto.et_time}<a class="click" id="${dto.et_ename}">click</a>
+	<p><img src="images/${dto.et_img1}.jpg"  width="300">
+	운동이름 : ${dto.et_name}, 운동레벨 : ${dto.et_lv}운동시간:${dto.et_time}
+	<a class="click" id="${dto.et_ename}">click</a>
 	</p><br>
 </c:forEach>
 </body>

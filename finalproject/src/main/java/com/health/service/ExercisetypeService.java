@@ -5,15 +5,11 @@ import java.util.List;
 import com.health.dto.ExercisetypeDTO;
 
 
-public interface ExercisetypeService {
-	public int insertmember(ExercisetypeDTO dto);
-	public int upatemember(ExercisetypeDTO dto);
-	public int deletemember(String id);
-	
+public interface ExercisetypeService{
 	public List<ExercisetypeDTO> exercisetypelist();
-	public List<ExercisetypeDTO> exercisetypelist(int page);	
-	public List<ExercisetypeDTO>  exercisetypelist(String[] et_name);	
-	public ExercisetypeDTO exercisetype(String et_name);
+	public List<ExercisetypeDTO>  exercisetypelist(int [] et_num);
+	public ExercisetypeDTO exercisetypename(String et_ename);
+	public ExercisetypeDTO exercisetypenum(int et_num);
 	
 	
 }

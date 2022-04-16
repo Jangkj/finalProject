@@ -7,7 +7,8 @@ public class ExercisetypeDTO {
 	int et_num, et_met,et_time,et_lv, ec_num;
 
 
-	public ExercisetypeDTO(){}
+	public ExercisetypeDTO(){};
+	
 	
 	public int getEt_num() {
 		return et_num;
