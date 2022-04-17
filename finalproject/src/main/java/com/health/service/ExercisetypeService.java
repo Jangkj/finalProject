@@ -7,7 +7,7 @@ import com.health.dto.ExercisetypeDTO;
 
 public interface ExercisetypeService{
 	public List<ExercisetypeDTO> exercisetypelist();
-	public List<ExercisetypeDTO>  exercisetypelist(int [] et_num);
+	public List<ExercisetypeDTO>  exercisetyperesssearch(String[] et_ename);
 	public ExercisetypeDTO exercisetypename(String et_ename);
 	public ExercisetypeDTO exercisetypenum(int et_num);
 	

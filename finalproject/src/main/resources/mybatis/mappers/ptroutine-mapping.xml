@@ -10,7 +10,7 @@
 
 
 <select id="exercisetyperesssearch" resultType="exercisetypedto" >
-select * from exercisetype_table where et_num in 
+select * from exercisetype_table where et_ename in 
 <foreach collection="array" item="add" open="("  close=")"  separator=",">
 	#{add}
 </foreach>

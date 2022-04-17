@@ -24,8 +24,8 @@ public class ExercisetypeServiceImpl implements ExercisetypeService {
 
 
 	@Override
-	public List<ExercisetypeDTO>  exercisetypelist(int[] et_num) {
-		return dao.exercisetyperesssearch(et_num);
+	public List<ExercisetypeDTO>  exercisetyperesssearch(String[] et_ename) {
+		return dao.exercisetyperesssearch(et_ename);
 	}
 	
 	@Override

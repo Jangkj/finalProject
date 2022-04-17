@@ -1,5 +1,6 @@
 package com.health.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -41,6 +42,7 @@ public class PtController {
 	@ResponseBody
 	public List<ExercisetypeDTO> ptcart(HttpServletRequest request) {
 		int m_num = 1;
+		ArrayList<String> list = new ArrayList<>(); 
 		Cookie[] getCookie = request.getCookies();
 		if(getCookie != null){
 		      for(int i=0; i<getCookie.length; i++){
@@ -48,22 +50,15 @@ public class PtController {
 		         String name = c.getName(); // 쿠키 이름 가져오기
 		         String value = c.getValue(); // 쿠키 값 가져오기
 		         if(exercisetypeservice.exercisetypename(name)!=null) {
-		        	 ExercisetypeDTO picket = exercisetypeservice.exercisetypename(name);
-						int et_num = picket.getEt_num();
-						if(ptcartservice.selectptcartcheck(m_num, et_num)==0) {
-							ptcartservice.insertptcart(m_num, et_num);
-						} 
+		        	 list.add(name);
+
 		         };
 		      }
 		   }
-		List<PtcartDTO> a = ptcartservice.selectptcart(m_num);
-		int[] c = new int[a.size()];
-		int i = 0;
-		for(PtcartDTO b : a){
-			c[i]= b.getEt_num();
-			i++;
-		};
-		List<ExercisetypeDTO> ptcart = exercisetypeservice.exercisetypelist(c);
+
+		System.out.println(list);
+		String[] resultlist = list.toArray(new String[0]);
+		List<ExercisetypeDTO> ptcart = exercisetypeservice.exercisetyperesssearch(resultlist);
 		return ptcart;
 	}
 
