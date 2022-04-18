@@ -9,6 +9,10 @@ public class ExercisetypeDTO {
 
 	public ExercisetypeDTO(){};
 	
+	public ExercisetypeDTO(int et_num){
+		this.et_num = et_num;
+	};
+	
 	
 	public int getEt_num() {
 		return et_num;

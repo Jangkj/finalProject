@@ -39,4 +39,3 @@ select * from exercisetype_table where et_ename in
 
 
 
-

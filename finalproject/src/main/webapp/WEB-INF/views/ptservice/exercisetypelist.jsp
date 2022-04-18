@@ -19,76 +19,39 @@ $(document).ready(function(){
 	var deleteCookie = function(name) {
 		document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 	};
-	$(document).on("click", ".click,.delect", function(){//선택운동목록전송
-		var event1 = $(this).attr("id"); 
-		var event = $(this).attr("class");
-		console.log(event1);
-		$.ajax({
-		    url : "exerciselist",              
-		    type : 'POST',          
-		    dataType: 'json',
-		    success :  function(ptcart){ 
-		    	var table = "<table border=3>루틴명:<input type='text' name= pr_info>";
-				for(var i = 0; i < ptcart.length; i++){
-					table +="<tr><td>" + ptcart[i].et_num + "<td>"
-					+ptcart[i].et_name+"<td>"
-					+ptcart[i].et_time+"<td>"
-					+"<input type='number' name="+ptcart[i].et_ename+" min='0' max='100'><td>"
-					+"<p class ='delect' id=d"+ptcart[i].et_ename+">삭제하기</p></td></tr>";
-				}//for
-				table +="</table><input class='add' type=button value='등록'>";
-				$("#ptcart").html(table);
-			}//success
-		});
-		if(event == "click"){
-			setCookie(event1,10, 1);
-		}
-		if(event == "delect"){
-			var delectevent = event1.substr(1);
-			deleteCookie(delectevent);
+	var pick_pt = "";
+	var pick_num = 0;
+	$(".num").on("change keyup paste", function() {//선택운동목록전송
+		pick_pt = $(this).attr("name");
+		pick_num = $(this).val();
+	});
+	$(".click").on('click', function(){
+		if(pick_num != 0){
+		pick_pt = $(this).attr("id");
+		setCookie(pick_pt,pick_num, 1);
+		alert(pick_pt+"이"+pick_num+"개 운동목록으로 등록되었습니다.");
+		}else{
+			alert("운동목록의 수량을 입력하세요.");
 		}
 	});
-		/*  $(document).on("click", ".click", function(){
-			var exercisetypepick = $(this).attr("id");
-			$.ajax({
-				url: "exercisetypepick",
-				data : {'exercisetypepick':exercisetypepick}, 
-				type : 'get',
-				dataType: 'json',
-				success : function(){
-				}
-			});
-		}); */
-		/* $(document).on("click", ".delect", function(){
-			var a = $(this).attr("id");
-			$.ajax({
-				url: "ptcartdelect",
-				data : {'ptcartdelect':a} , 
-				type : 'get',
-				dataType: 'json',
-				success : function(){
-				}//success end	
-			});//ajax end
-		}); 
-		$(document).on("click", ".add", function(){
-			$.ajax({
-				url: "routinadd",
-				data : {'ptcartdelect':a} , 
-				type : 'get',
-				dataType: 'json',
-				success : function(){
-				}//success end	
-			});//ajax end
-		});	 */
+	$(".delect").on('click', function(){
+		var delect_pt = $(this).attr("id");
+		delect_pt = (delect_pt.split("-"))[1];
+		alert(delect_pt+"이 운동목록으로 삭제되었습니다.");
+		deleteCookie(delect_pt);
+	});
+	
 });
 </script>
 <div id="pick_et"></div>
-<div id="ptcart">선택한 상품은 여기에 표시됩니다</div>
 <c:forEach items="${exercisetypelist}" var="dto" >
 	<p><img src="images/${dto.et_img1}.jpg"  width="300">
 	운동이름 : ${dto.et_name}, 운동레벨 : ${dto.et_lv}운동시간:${dto.et_time}
+	<input type="number" class="num" value ="0" name="n-${dto.et_ename}" min="0" max="100">
 	<a class="click" id="${dto.et_ename}">click</a>
+	<a class="delect" id="a-${dto.et_ename}">delect</a>
 	</p><br>
 </c:forEach>
+<a href="http://localhost:8081/exercisepick">루틴등록하러가기</a>
 </body>
 </html>
