@@ -8,6 +8,7 @@
 	<typeAlias type="com.health.dto.MemberDTO" alias="memberdto"/>
 	<typeAlias type="com.health.dto.AdminDTO" alias="admindto"/>
 	<typeAlias type="com.health.dto.ProductDTO" alias="productDTO"/>
+	<typeAlias type="com.health.dto.CategoryDTO" alias="categorydto"/>
 </typeAliases>
 
 

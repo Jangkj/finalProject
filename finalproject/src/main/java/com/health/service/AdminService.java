@@ -14,5 +14,5 @@ public interface AdminService {
 	
 	
 	
-	public int execute(Model model,String pagenum, String contentnum);
+	public int execute(Model model,String pagenum, String contentnum, String categorynum);
 }

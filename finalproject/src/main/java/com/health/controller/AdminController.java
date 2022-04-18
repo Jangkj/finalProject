@@ -17,14 +17,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.health.dto.AdminDTO;
+import com.health.dto.CategoryDTO;
 import com.health.service.AdminService;
+import com.health.service.CategoryService;
 
 @Controller
 public class AdminController {
 	@Autowired
 	@Qualifier("adminservice")
 	AdminService service;
-	
+	@Autowired
+	@Qualifier("categoryservice")
+	CategoryService cservice;
 	@RequestMapping("/main_admin")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView();
@@ -86,10 +90,13 @@ public class AdminController {
 //		return "/tables";
 //	}
 	@RequestMapping(value="/adminselect")
-	public ModelAndView adminselect(Model model,@RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "10") String contentnum) throws Exception{
+	public ModelAndView adminselect(Model model,@RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum, @RequestParam(defaultValue = "category_num") String categorynum) throws Exception{
 		ModelAndView mv= new ModelAndView();
-		service.execute(model, pagenum, contentnum);
+		service.execute(model, pagenum, contentnum, categorynum);
+		List<CategoryDTO> clist = cservice.categorylist();
+		mv.addObject("categorylist", clist);
 		mv.setViewName("admin/adminselect");
 		return mv;
 	}
+
 }
