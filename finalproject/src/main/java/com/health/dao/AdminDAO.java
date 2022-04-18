@@ -20,6 +20,8 @@ public interface AdminDAO {
 	
 	
 	public List<ProductDTO> testlist(int pagenum, int contentnum);
+	public List<ProductDTO> testlist2(int pagenum, int contentnum, int categorynum);
 	public int testcount();
+	public int testcount2(int categorynum);
 	
 }

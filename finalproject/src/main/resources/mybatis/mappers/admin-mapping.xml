@@ -28,7 +28,19 @@
 	<select id="testlist" resultType="admindto">
 		select * from product_table order by prod_num limit #{pagenum}, #{contentnum}
 	</select>
+
+	<select id="testlist2" resultType="admindto">
+		select * from product_table where category_num=#{categorynum} order by prod_num limit #{pagenum}, #{contentnum}
+	</select>
+	
 	<select id="testcount" resultType="int">
 		select count(*) from product_table
+	</select>
+	<select id="testcount2" resultType="int">
+		select count(*) from
+		product_table where category_num = #{categorynum}
+	</select>
+	<select id="categorylist" resultType="categorydto"><!-- mybatis-config.xml -->
+		select * from category_table;
 	</select>
 </mapper>
