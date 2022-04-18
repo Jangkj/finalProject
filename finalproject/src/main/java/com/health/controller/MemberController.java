@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.health.dao.MemberDao;
-import com.health.dto.MemberDto;
+import com.health.dto.MemberDTO;
 import com.health.service.MemberServiceImpl;
 
 @Controller
@@ -37,7 +36,7 @@ public class MemberController {
 
     // 회원가입 처리
     @PostMapping("/user/signup")
-    public String execSignup(MemberDto dto) {
+    public String execSignup(MemberDTO dto) {
     	System.out.println(dto);
     	List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 //		authorities.add(new SimpleGrantedAuthority("ADMIN"));
@@ -61,10 +60,10 @@ public class MemberController {
     }
 
     // 로그아웃 결과 페이지
-    @GetMapping("/user/logout/result")
-    public String dispLogout() {
-        return "logout";
-    }
+    //@GetMapping("/user/logout/result")
+    //public String dispLogout() {
+    //    return "logout";
+    //}
 
     // 접근 거부 페이지
     @GetMapping("/user/denied")

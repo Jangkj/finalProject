@@ -30,12 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/resources/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
+			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
+			.antMatchers("/", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
 			.antMatchers("/user/admin/**").access("hasAuthority('ADMIN')")
 			
 			.antMatchers("/user/myinfo").access("hasAuthority('USER')") // 페이지 권한 설정
 			
-			//.antMatchers("/", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
 			.antMatchers("/**").permitAll()
 			
 			.anyRequest().authenticated()
@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.permitAll() // 로그인 설정
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) // 로그아웃 설정
-			.logoutSuccessUrl("/user/logout/result").invalidateHttpSession(true)
+			.logoutSuccessUrl("/login").invalidateHttpSession(true) //user/logout/result
 			.and()
 			.exceptionHandling().accessDeniedPage("/user/denied") // 403 예외처리 핸들링
 			.and()
@@ -58,7 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userService).passwordEncoder(userService.passwordEncoder());
 	}
 	
-	//j-session 삭제
+	
+	//j-sessionid 삭제
 	@Bean
 	public ServletContextInitializer clearJsession() {
 		return new ServletContextInitializer() {
