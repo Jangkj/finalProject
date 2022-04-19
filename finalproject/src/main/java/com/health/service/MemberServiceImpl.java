@@ -67,6 +67,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberdao.readUser(m_mail);		
 	}
 
+	// 이메일 중복체크
+		public int checkEmail(String m_mail) {
+			int result = memberdao.checkEmail(m_mail);
+			return result;
+		}
 	
 	
 }

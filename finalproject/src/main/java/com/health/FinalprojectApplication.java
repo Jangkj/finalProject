@@ -10,6 +10,7 @@ import com.health.controller.MemberController;
 @SpringBootApplication
 @ComponentScan(basePackageClasses = MemberController.class)
 @ComponentScan(basePackages = {"com.health.service"})
+@ComponentScan(basePackages = {"com.health.service"})
 @MapperScan(basePackages = "com.health.dao")
 public class FinalprojectApplication {
 

@@ -9,21 +9,34 @@ public class MemberDTO implements UserDetails {
 
 	private static final long serialVersionUID = 5177294317961485740L;
 
-	private int m_num;
+	private int m_num;	
+
 	private String m_mail;
+	
 	private String m_pw;
+	
 	private String m_name;
+	
 	private boolean isAccountNonExpired;
 	private boolean isAccountNonLocked;
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
 	private Collection<? extends GrantedAuthority> authorities;
+	
+	
 	private String m_hp;
+	
 	private int m_post;
+	
+	
 	private String m_add1;
+	
+	
 	private String m_add2;
-	private String m_date;
-
+	
+	
+	private String m_date;	
+	
 	@Override
 	public String getUsername() {
 		return m_mail;
@@ -109,6 +122,7 @@ public class MemberDTO implements UserDetails {
 				+ isAccountNonExpired + ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialsNonExpired="
 				+ isCredentialsNonExpired + ", isEnabled=" + isEnabled + "]";
 	}
+	
 
 	public MemberDTO(String m_mail, String m_pw, String m_name, boolean isAccountNonExpired, boolean isAccountNonLocked,
 			boolean isCredentialsNonExpired, boolean isEnabled) {

@@ -37,4 +37,11 @@
 	<delete id="deleteAuthority" parameterType="String">
 		DELETE FROM authority WHERE m_mail = #{m_mail}
 	</delete>
+		<!-- 이메일 중복체크 -->
+	<select id="checkEmail" resultType="int" parameterType="String">
+		select count(*)
+		from member_table
+		where m_mail=#{m_mail}
+	</select>
+	
 </mapper>

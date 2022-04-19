@@ -28,6 +28,10 @@
 	
 </head>
 
+<script>
+    
+</script>
+
 
 <body style="background-color:#212529">
     <!-- Start Top Nav -->
@@ -273,7 +277,7 @@
     <script src="../resources/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../resources/js/templatemo.js"></script>
-    <script src="../resources/js/custom.js"></script>
+    <script src="../resources/js/logincustom.js"></script>
 	<!-- <script src="../resources/js/loginup.js"></script> -->
 
 <!--   <script type="text/javascript">

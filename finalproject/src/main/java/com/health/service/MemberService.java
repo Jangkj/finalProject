@@ -16,4 +16,5 @@ public interface MemberService extends UserDetailsService {
      public void deleteUser(String m_mail);
      public PasswordEncoder passwordEncoder();
      public MemberDTO getInfo(String m_mail);
+     public int checkEmail(String m_mail);
 }

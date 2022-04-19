@@ -14,5 +14,6 @@ public interface MemberDAO {
 	public void createUser(MemberDTO dto);
 	public void createAuthority(MemberDTO dto);
 	public void deleteUser(String m_mail);
-	public void deleteAuthority(String m_mail);	
+	public void deleteAuthority(String m_mail);
+	public int checkEmail(String m_mail);
 }
