@@ -14,11 +14,11 @@
      </select>
 
 	<insert id="createUser" parameterType="MemberDTO">
-		INSERT INTO member_table (m_num, m_mail, m_pw, m_name, isAccountNonExpired,
-		isAccountNonLocked, isCredentialsNonExpired, isEnabled, m_hp, m_post, m_add1, m_add2, m_date)
+		INSERT INTO member_table (m_num, m_mail, m_pw, isAccountNonExpired,
+		isAccountNonLocked, isCredentialsNonExpired, isEnabled, m_name, m_hp, m_post, m_add1, m_add2, m_date)
 		
-		VALUES (#{m_num}, #{m_mail}, #{m_pw}, #{m_name}, #{isAccountNonExpired},
-		#{isAccountNonLocked}, #{isCredentialsNonExpired}, #{isEnabled}, #{m_hp}, #{m_post}, #{m_add1}, #{m_add2}, now())
+		VALUES (#{m_num}, #{m_mail}, #{m_pw}, #{isAccountNonExpired},
+		#{isAccountNonLocked}, #{isCredentialsNonExpired}, #{isEnabled}, #{m_name}, #{m_hp}, #{m_post}, #{m_add1}, #{m_add2}, now())
 	</insert>
 
 	<insert id="createAuthority"
@@ -43,5 +43,10 @@
 		from member_table
 		where m_mail=#{m_mail}
 	</select>
+	
+	<update id="updateMember">
+		update member_table set m_mail=#{m_mail}, m_pw=#{m_pw}, m_hp=#{m_hp}, m_post-#{m_post}, m_add1=#{m_add1}, m_add2=#{m_add2}
+		where m_mail=#{m_mail}
+	</update>
 	
 </mapper>

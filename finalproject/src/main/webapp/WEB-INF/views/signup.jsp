@@ -96,7 +96,7 @@ function email_Check() {
     <nav class="navbar navbar-expand-lg bg-dark navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-light logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-light logo h1 align-self-center" href="/">
                 MultiHealth
             </a>
 
@@ -108,7 +108,7 @@ function email_Check() {
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="index.html">Home</a>
+                            <a class="nav-link text-white" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="about.html">Product</a>
@@ -117,7 +117,7 @@ function email_Check() {
                             <a class="nav-link text-white" href="shop.html">Information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="signup.html">---</a>
+                            <a class="nav-link text-white" href="/user/signup">---</a>
                         </li>
                     </ul>
                 </div>

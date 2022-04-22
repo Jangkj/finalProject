@@ -18,59 +18,67 @@
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
+    <link rel="stylesheet" href="http://localhost:8081/resources/css/fontawesome.min.css">
 
     <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-function email_Check() {
-	  var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	  var email = $('#email').val();
-	  
-	  if(!emailReg.test($("#email").val())) {
-		  // 0 : 이메일 길이 / 문자열 검사		  
-		  $("#email_result").text("ex) user@health.com");
-		  $('#email_result').css('color', 'red');
-	  } else if(email == null) {
-		  $('#email_result').text('이메일을 입력해주세요.');
-		  $('#email_result').css('color', 'red');
-		}	  
-		$.ajax({
-			url: '<%=request.getContextPath() %>/checkEmail',
-			data: {"m_mail" : $("#email").val()},
-			type: 'post',
-			dataType: 'json',
-			success: function(data) {
-				if(data == 1) {
-					$("#email_result").text("사용중인 이메일 입니다.");					
-					$("#email_result").css("color", "red");
-				} else if(data == 0 && emailReg.test($("#email").val())) {
-					$("#email_result").text("사용 가능한 이메일 입니다.");
-					$("#email_result").css("color", "blue");
-				}
-			}
-		});	
+<script type="text/javascript">
+
+function update_check() {
+	if (password_change.value == password_con) {
+		alert("비밀번호 확인란을 입력해주세요.");
+		password_con.focus();
+		return false;
+	};
 }
 
 
-$("#update").on("click",function(e){ 
 
-self.location ="/user/update"; 
-});
+function infoupdate (){
+    let data ={
+    	"username":$("#email").val(),
+    	"m_name":$("#name").val(),
+        "old_pw":$("#password").val(), //구 비번
+        "password":$("#password_change").val(), //신 비번           
+        "m_hp":$("#phone").val(),
+        "m_post":$("#postcode").val(),
+        "m_add1":$("#address").val(),
+        "m_add2":$("#address2").val()
+        
+    }
+    alert($("#postcode").val())
 
+    $.ajax({
+        type:"POST",
+        url:"/user/info/infoupdate/result",
+        data:JSON.stringify(data), //object -> json
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",        	
+        beforeSend : function(xhr) {
+        xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+        }
+    }).done(function (response){
+        alert(response.dto + "회원 수정 완료");
+        location.href = "/";
+    }).fail(function (error){
+        alert(error.dto);
+        alert("회원 수정 실패");
+    }); //ajax통신으로 데이터를 json으로 변경 후 insert
+
+}
 </script>
 
 
 </head>
     <!-- Start Script -->
-    <script src="../resources/js/jquery-1.11.0.min.js"></script>
-    <script src="../resources/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../resources/js/bootstrap.bundle.min.js"></script>
-    <script src="../resources/js/templatemo.js"></script>    
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/templatemo.js"></script>    
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="../resources/js/logincustom.js"></script>
+	<script src="<%=request.getContextPath() %>/resources/js/logincustom.js"></script>
 
 
     <!-- End Script -->
@@ -190,65 +198,92 @@ self.location ="/user/update";
 		<sec:authentication property="principal" var="user" />
 	</sec:authorize>
         <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form" action="/user/signup" method="post" id="formsubmit">
+            <form class="col-md-9 m-auto" role="form" action="/user/info/infoupdate/result" method="post">
                 <div class="row">
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
                     <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"/>
                         <label for="inputemail">이메일</label>
                         <input type="email" class="form-control mt-1" id="email" name="m_mail" value="${user.username }" readonly="readonly">
                         <span id="email_result"></span>
-                                                
                     </div>
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
                         <label for="inputname">이름</label>
                         <input type="name" class="form-control mt-1" id="name" name="m_name" value="${user.m_name }" maxlength="20" readonly="readonly">
                         
-                    </div>                   
+                    </div>
+                    <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
+                        <label for="inputpassword">비밀번호</label>
+                        <input type="password" class="form-control mt-1" id="password" name="m_pw" placeholder="8자 이상 20자 이내" maxlength="20">                        
+                     </div>                    
+                </div>
+				<div class="row">
+					<div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
+						<label for="inputpasswordcon">비밀번호 변경</label> <input
+							type="password" class="form-control mt-1" id="password_change" name="m_pw">
+					</div>
+				</div>
+				<div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
+                    <label for="inputpasswordcon">비밀번호 확인</label>
+                    <input type="password" class="form-control mt-1" id="password_con" onfocusout="update_check()" placeholder="비밀번호 확인">                        
+                </div>
 
+				<div>
+                    <input type="hidden" name="isAccountNonExpired" id="isAccountNonExpired" value="true">
+                    <input type="hidden" name="isAccountNonLocked" id="isAccountNonLocked" value="true">
+                    <input type="hidden" name="isCredentialsNonExpired" id="isCredentialsNonExpired" value="true">
+                    <input type="hidden" name="isEnabled" id="isEnabled" value="true">
+                </div>
 
                 <div class="mb-3" style="padding-bottom: 30px;">
-                    <label for="inputtext">전화 번호</label>
-                    <input type="text" class="form-control mt-1" id="phone" name="m_hp" value="${user.m_hp }" maxlength="11" readonly="readonly">
+                    <label for="inputtext">전화 번호 변경</label>
+                    <input type="text" class="form-control mt-1" id="phone" name="m_hp" value="${user.m_hp }" maxlength="11">
                     
                 </div>               
                 
                  
 
-                <div class="form-group col-md-6 mb-3">
-                    <div class="col-sm-3 control-label">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">
                         <label id="zip_num">우편번호</label>                        
                     </div>                    
                     <div class="row">
-                        <div class="col-sm-12" style="padding-bottom: 30px;">
-                        <input type="text" id="postcode" placeholder="우편번호"  name="m_post" value="${user.m_post }" class="form-control" readonly="readonly">
-                        </div>                        
+                        <div class="col-sm-4" style="padding-bottom: 30px;">
+                        <input type="text" id="postcode" placeholder="우편번호"  name="m_post" value="${user.m_post }" class="form-control">
+
+                        </div>
+                        <div class="col-sm-3">
+                        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary">                  
+                        </div>
                     </div>
                 </div>   
                 
-                <div class="row"><!--  -->
+                <div class="row" style="margin-top: 15px"><!--  -->
                     <div class="form-group col-md-6 mb-3">
                      <div class="col-sm-3 control-label">
                      <label id="address1">주소</label>
                     </div>
                     <div class="col-sm-12">
-                        <input type="text" id="address" name="m_add1" value="${user.m_add1 }" class="form-control" readonly="readonly">                        
+                        <input type="text" id="address" name="m_add1" value="${user.m_add1 }" class="form-control">
+                        
                     </div>   
-                   </div>              
+                   </div>
+              
                    <div class="form-group col-md-6 mb-3">
                     <div class="col-sm-3 control-label">
                         <label id="address1">상세주소</label>
                     </div>
                     <div class="col-sm-12"> 
-                        <input type="text" id="address2" placeholder="상세주소" name="m_add2" value="${user.m_add2 }" class="form-control" maxlength="50" readonly="readonly">
+                        <input type="text" id="address2" placeholder="상세주소" name="m_add2" value="${user.m_add2 }" class="form-control" maxlength="50">
                     </div>
                   </div>
                 </div>
 
 				<div class="row">
-                    <div class="col text-end mt-2">
-					<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><button type="button" id="list" onclick="location.href='/'" class="btn btn-primary btn-lg px-3">목록으로</button></sec:authorize>
-					<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><button type="button" id="update" onclick="location.href='/user/info/infoupdate'"class="btn btn-primary btn-lg px-3">수정</button></sec:authorize>
-					</div>
+					<div class="col text-end mt-2">
+                        <button type="button" class="btn btn-primary btn-lg px-3" onclick="infoupdate();">변경</button>
+                    </div>
+                   
+
 				</div>
 			</form>
         </div>

@@ -37,6 +37,11 @@ public class MemberDTO implements UserDetails {
 	
 	private String m_date;	
 	
+	private String old_pw;
+	
+	
+	
+
 	@Override
 	public String getUsername() {
 		return m_mail;
@@ -174,6 +179,14 @@ public class MemberDTO implements UserDetails {
 
 	public void setM_date(String m_date) {
 		this.m_date = m_date;
+	}
+	
+	public String getOld_pw() {
+		return old_pw;
+	}
+
+	public void setOld_pw(String old_pw) {
+		this.old_pw = old_pw;
 	}
 
 }

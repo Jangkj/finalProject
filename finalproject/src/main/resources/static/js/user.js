@@ -75,9 +75,6 @@ function signup_check() {
 };
 
 
-
-    
-
 function execDaumPostcode() {
             new daum.Postcode({
                 oncomplete: function(data) {
@@ -128,3 +125,6 @@ function execDaumPostcode() {
                 }
             }).open();
         }
+        
+        
+        

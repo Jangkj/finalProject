@@ -1,12 +1,18 @@
 package com.health.service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,6 +28,9 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDAO memberdao;
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();	
+	
+	
+
 
 	@Override
 	public UserDetails loadUserByUsername(String m_mail) throws UsernameNotFoundException { //principal 객체 - 로그아웃성공시 제거됨
@@ -68,10 +77,34 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	// 이메일 중복체크
-		public int checkEmail(String m_mail) {
-			int result = memberdao.checkEmail(m_mail);
-			return result;
+	public int checkEmail(String m_mail) {
+		int result = memberdao.checkEmail(m_mail);
+		return result;
+	}
+
+	@Override
+	public String updateUser(Map<String, Object> param) {
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		
+		if (!principal.getOld_pw().equals("")) {
+			String oldPassword = principal.getOld_pw();
+			String rawPassword = principal.getPassword();
+			String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
+			oldPassword = new BCryptPasswordEncoder().encode(oldPassword);
+			if (oldPassword.equals(principal.getPassword())) {
+				principal.setPassword(encodedPassword);
+			}else {
+				return "기존 비밀번호가 틀렸습니다";
+			}
+
+		}else {
+			principal.setPassword(principal.getPassword());			
 		}
+		
+		memberdao.updateMember(param);
+		return "성공";
+	}	
+
 	
 	
 }

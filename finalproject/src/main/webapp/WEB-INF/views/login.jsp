@@ -60,7 +60,7 @@
     <nav class="navbar navbar-expand-lg bg-dark navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-light logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-light logo h1 align-self-center" href="/">
                 MultiHealth
             </a>
 
@@ -146,20 +146,22 @@
 	          <div class="card-body" style="height: 350px; padding: 55px 20px 0px 20px;">
 	            <h5 class="card-title text-center">Log In</h5>
 	            <form class="form-signin" method="post" action="/login">
-					<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		            <div class="form-label-group">
 		              <input type="text" id="id" name="username" class="form-control" placeholder="id" required autofocus>
 		            </div><br>
 		            <div class="form-label-group" style="margin-bottom: 30px">
 		              <input type="password" id="pwd" name="password" class="form-control" placeholder="Password" required>
 		            </div>
-		
-					
-		            <button style="margin-left: 100px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+					    <div th:if="${param.error}">
+					        <p th:text="${exception}" class="alert alert-danger"></p>
+					    </div>
+
+							<button style="margin-left: 100px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
 		            <!-- <hr class="my-4">
 		            Forgot your <a href="javascript:void(0)" onclick="findid()">ID</a> or 
 		            				<a href="javascript:void(0)" onclick="findpassword()">Password</a>?   비번찾기-->
-		            <button style="float: right; margin-right: 100px" class="btn btn-lg btn-secondary btn-block text-uppercase" onclick="location='signup'">Join</button>
+		            <button style="float: right; margin-right: 100px" class="btn btn-lg btn-secondary btn-block text-uppercase" onclick="location='/user/agreement'">Join</button>
 	            </form>
 	          </div>
 	        </div>
@@ -186,7 +188,7 @@
                     <ul class="list-unstyled text-dark footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw text-dark"></i>
-                            지구 어딘가
+                            ---
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw text-dark"></i>
@@ -202,25 +204,25 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-dark border-bottom pb-3 border-light">상품페이지경로</h2>
                     <ul class="list-unstyled text-dark footer-link-list">
-                        <li><a class="text-dark" href="#">원하는</a></li>
-                        <li><a class="text-dark" href="#">만큼의</a></li>
-                        <li><a class="text-dark" href="#">카테고리를</a></li>
-                        <li><a class="text-dark" href="#">쓰면</a></li>
-                        <li><a class="text-dark" href="#">될거</a></li>
-                        <li><a class="text-dark" href="#">같아요</a></li>
-                        <li><a class="text-dark" href="#">찡긋☆</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-dark border-bottom pb-3 border-light">게시판이나 정보</h2>
                     <ul class="list-unstyled text-dark footer-link-list">
-                        <li><a class="text-dark" href="#">이 란은</a></li>
-                        <li><a class="text-dark" href="#">서아씨</a></li>
-                        <li><a class="text-dark" href="#">서비스</a></li>
-                        <li><a class="text-dark" href="#">링크로</a></li>
-                        <li><a class="text-dark" href="#">쓰시면</a></li>
-                        <li><a class="text-dark" href="#">되실듯</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
+                        <li><a class="text-dark" href="#">---</a></li>
                     </ul>
                 </div>
 
@@ -247,7 +249,7 @@
                     </ul>
                 </div>
                 <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">이메일 주소 검색창  이건 왜있지..?</label>
+                    <label class="sr-only" for="subscribeEmail">이메일 주소 검색창</label>
                     <div class="input-group mb-2">
                         <input type="text" class="form-control bg-white border-light" id="subscribeEmail" placeholder="Email address">
                         <div class="input-group-text btn-primary text-dark">Subscribe </div>
