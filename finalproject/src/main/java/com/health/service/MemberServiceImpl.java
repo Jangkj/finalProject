@@ -1,14 +1,12 @@
 package com.health.service;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import javax.websocket.DecodeException;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,33 +25,34 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberDAO memberdao;
-	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();	
-	
-	
-
+	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@Override
-	public UserDetails loadUserByUsername(String m_mail) throws UsernameNotFoundException { //principal 객체 - 로그아웃성공시 제거됨
+	public UserDetails loadUserByUsername(String m_mail) throws UsernameNotFoundException { // principal 객체 - 로그아웃성공시
+																							// 제거됨
 		MemberDTO user = memberdao.readUser(m_mail);
-		if(user==null) {
+		if (user == null) {
 			throw new UsernameNotFoundException(m_mail);
 		}
 		user.setAuthorities(getAuthorities(m_mail));
 		return user;
 	}
-	
+
 	public Collection<GrantedAuthority> getAuthorities(String m_mail) {
-        List<String> string_authorities = memberdao.readAuthority(m_mail);
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        for (String authority : string_authorities) {
-             authorities.add(new SimpleGrantedAuthority(authority));
-        }
-        return authorities;
-   }
+		List<String> string_authorities = memberdao.readAuthority(m_mail);
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		for (String authority : string_authorities) {
+			authorities.add(new SimpleGrantedAuthority(authority));
+		}
+		return authorities;
+	}
 
 	@Override
 	public void createUser(MemberDTO dto) {
 		String rawPassword = dto.getPassword();
+		System.out.println("============================");
+		System.out.println(rawPassword);
+		System.out.println("============================");
 		String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
 		dto.setPassword(encodedPassword);
 		memberdao.createUser(dto);
@@ -73,7 +72,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDTO getInfo(String m_mail) {
-		return memberdao.readUser(m_mail);		
+		return memberdao.readUser(m_mail);
 	}
 
 	// 이메일 중복체크
@@ -81,30 +80,33 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberdao.checkEmail(m_mail);
 		return result;
 	}
+	
 
 	@Override
-	public String updateUser(Map<String, Object> param) {
+	public int updateUser(Map<String, Object> param) {
 		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
 		
-		if (!principal.getOld_pw().equals("")) {
-			String oldPassword = principal.getOld_pw();
-			String rawPassword = principal.getPassword();
+		if (!param.get("old_pw").equals("")) { //비밀번호 바뀔때
+			String oldPassword = param.get("old_pw").toString();
+			String rawPassword = param.get("m_pw").toString();
 			String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
-			oldPassword = new BCryptPasswordEncoder().encode(oldPassword);
-			if (oldPassword.equals(principal.getPassword())) {
+			
+			boolean chackpw = (boolean) passwordEncoder.matches(oldPassword, principal.getPassword());			
+		
+			if (chackpw) {
 				principal.setPassword(encodedPassword);
+				param.put("m_pw", encodedPassword);
 			}else {
-				return "기존 비밀번호가 틀렸습니다";
+				return 2;
 			}
 
 		}else {
-			principal.setPassword(principal.getPassword());			
+			principal.setPassword(principal.getPassword());	//비밀번호가 유지 될때
+			param.put("m_pw", principal.getPassword());
 		}
 		
 		memberdao.updateMember(param);
-		return "성공";
+		return 1;
 	}	
 
-	
-	
 }

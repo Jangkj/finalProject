@@ -32,11 +32,12 @@ function signup_check() {
 	};
 	
 	
-	var pwdCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/i;
+	var pwdCheck = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/i;
 	
 	if (!pwdCheck.test(password.value)) {
-		alert("비밀번호는 영문자+숫자+특수문자를 조합하여 8~20자를 사용해야합니다. ");
+		alert("비밀번호는 영문자+숫자를 조합하여 8~20자를 사용해야합니다. ");
 		password.focus();
+		return false;
 	};
 	
 	if (password_con.value !== password.value) {
@@ -64,12 +65,7 @@ function signup_check() {
 		alert("우편번호 찾기를 완료해주세요.");		
 		return false;
 	};
-	
-/*	if (!agree.checked) {
-		alert("약관 동의를 해주세요.");
-		agree.focus();
-		return false;
-	};*/
+	alert("회원가입 완료 되셨어요. 환영합니다.")
 	
 	document.getElementById("formsubmit").submit();
 };

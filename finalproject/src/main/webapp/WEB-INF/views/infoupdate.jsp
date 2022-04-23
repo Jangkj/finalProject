@@ -38,33 +38,37 @@ function update_check() {
 
 function infoupdate (){
     let data ={
-    	"username":$("#email").val(),
+    	"m_mail":$("#email").val(),
     	"m_name":$("#name").val(),
         "old_pw":$("#password").val(), //구 비번
-        "password":$("#password_change").val(), //신 비번           
+        "m_pw":$("#password_change").val(), //신 비번           
         "m_hp":$("#phone").val(),
         "m_post":$("#postcode").val(),
         "m_add1":$("#address").val(),
-        "m_add2":$("#address2").val()
-        
+        "m_add2":$("#address2").val()        
     }
-    alert($("#postcode").val())
+    
 
     $.ajax({
         type:"POST",
         url:"/user/info/infoupdate/result",
         data:JSON.stringify(data), //object -> json
         contentType:"application/json; charset=utf-8",
-        dataType:"json",        	
-        beforeSend : function(xhr) {
+        dataType:"json",
+        success: function(data) {
+			if (data == 1) {
+				alert("성공인거 같냐?");
+			} else {
+				alert("실패다 때꺄");
+			}
+		},
+		error: function() {
+			alert("바보");
+		}
+        
+        /* beforeSend : function(xhr) {
         xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-        }
-    }).done(function (response){
-        alert(response.dto + "회원 수정 완료");
-        location.href = "/";
-    }).fail(function (error){
-        alert(error.dto);
-        alert("회원 수정 실패");
+        } */
     }); //ajax통신으로 데이터를 json으로 변경 후 insert
 
 }

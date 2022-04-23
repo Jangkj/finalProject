@@ -12,13 +12,13 @@
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../resources/css/templatemo.css">
-    <link rel="stylesheet" href="../resources/css/custom.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../resources/css/fontawesome.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
 
     <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
@@ -28,9 +28,14 @@
 	
 </head>
 
-<script>
-    
-</script>
+
+    <!-- Start Script -->
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/templatemo.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/logincustom.js"></script>
+	<!-- <script src="../resources/js/loginup.js"></script> -->
 
 
 <body style="background-color:#212529">
@@ -157,7 +162,7 @@
 					        <p th:text="${exception}" class="alert alert-danger"></p>
 					    </div>
 
-							<button style="margin-left: 100px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+							<button style="margin-left: 100px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log in</button>
 		            <!-- <hr class="my-4">
 		            Forgot your <a href="javascript:void(0)" onclick="findid()">ID</a> or 
 		            				<a href="javascript:void(0)" onclick="findpassword()">Password</a>?   비번찾기-->
@@ -274,51 +279,5 @@
     </footer>
     <!-- End Footer -->
 
-    <!-- Start Script -->
-    <script src="../resources/js/jquery-1.11.0.min.js"></script>
-    <script src="../resources/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../resources/js/bootstrap.bundle.min.js"></script>
-    <script src="../resources/js/templatemo.js"></script>
-    <script src="../resources/js/logincustom.js"></script>
-	<!-- <script src="../resources/js/loginup.js"></script> -->
-
-<!--   <script type="text/javascript">
-  function findid(){
-		var url="find_id_form";
-		
-		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
-	}
-  
-  function findpassword(){
-	  var url="find_password_form";
-	  
-	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
-  }
-  </script> -->
-
-
-
-
-
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-	<%-- <form action="/login" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        <input type="text" name="username" placeholder="이메일 입력해주세요">
-        <input type="password" name="password" placeholder="비밀번호">
-        <button type="submit">로그인</button>
-    </form>  --%>   
 </body>
 </html>

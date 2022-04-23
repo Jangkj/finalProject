@@ -5,11 +5,12 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 public class MemberDTO implements UserDetails {
 
 	private static final long serialVersionUID = 5177294317961485740L;
 
-	private int m_num;	
+	private int m_num;
 
 	private String m_mail;
 	
@@ -35,13 +36,11 @@ public class MemberDTO implements UserDetails {
 	private String m_add2;
 	
 	
-	private String m_date;	
-	
-	private String old_pw;
-	
-	
-	
+	private String m_date;
 
+	
+	
+	
 	@Override
 	public String getUsername() {
 		return m_mail;
@@ -127,7 +126,6 @@ public class MemberDTO implements UserDetails {
 				+ isAccountNonExpired + ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialsNonExpired="
 				+ isCredentialsNonExpired + ", isEnabled=" + isEnabled + "]";
 	}
-	
 
 	public MemberDTO(String m_mail, String m_pw, String m_name, boolean isAccountNonExpired, boolean isAccountNonLocked,
 			boolean isCredentialsNonExpired, boolean isEnabled) {
@@ -179,14 +177,6 @@ public class MemberDTO implements UserDetails {
 
 	public void setM_date(String m_date) {
 		this.m_date = m_date;
-	}
-	
-	public String getOld_pw() {
-		return old_pw;
-	}
-
-	public void setOld_pw(String old_pw) {
-		this.old_pw = old_pw;
 	}
 
 }

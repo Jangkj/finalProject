@@ -65,12 +65,12 @@ self.location ="/user/update";
 
 </head>
     <!-- Start Script -->
-    <script src="../resources/js/jquery-1.11.0.min.js"></script>
-    <script src="../resources/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../resources/js/bootstrap.bundle.min.js"></script>
-    <script src="../resources/js/templatemo.js"></script>    
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/templatemo.js"></script>    
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="../resources/js/logincustom.js"></script>
+	<script src="<%=request.getContextPath() %>/resources/js/logincustom.js"></script>
 
 
     <!-- End Script -->
@@ -201,7 +201,7 @@ self.location ="/user/update";
                     </div>
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
                         <label for="inputname">이름</label>
-                        <input type="name" class="form-control mt-1" id="name" name="m_name" value="${user.m_name }" maxlength="20" readonly="readonly">
+                        <input type="name" class="form-control mt-1" id="name" name="m_name" value="${user.password }" maxlength="20" readonly="readonly">
                         
                     </div>                   
 
