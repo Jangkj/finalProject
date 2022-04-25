@@ -7,6 +7,9 @@
 <typeAliases>
 	<typeAlias type="com.health.dto.ExercisetypeDTO" alias="exercisetypedto"/>
 	<typeAlias type="com.health.dto.PtroutineDTO" alias="ptroutinedto"/>
+	<typeAlias type="com.health.dto.PtuserDTO" alias="ptuserdto"/>
+	<typeAlias type="com.health.dto.PtroutineoneDTO" alias="ptroutineonedto"/>
+	<typeAlias type="com.health.dto.WorkoutDTO" alias="Workoutdto"/>
 </typeAliases>
 </configuration>
 

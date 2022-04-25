@@ -17,7 +17,7 @@ select * from exercisetype_table where et_ename in
 </select>
 
 <select id="exercisetypename" resultType="exercisetypedto" parameterType="String">
-	select * from exercisetype_table where et_ename=#{et_ename}
+	select * from exercisetype_table where et_ename=#{et_ename} 
 </select>
 
 <select id="exercisetypenum" resultType="exercisetypedto" parameterType="int">
