@@ -18,7 +18,7 @@
     
 	    <sec:authorize access="isAnonymous()"><a href="/user/loginPage">로그인</a></sec:authorize>
 	    <sec:authorize access="isAuthenticated()"><a href="/user/logout">로그아웃</a></sec:authorize>
-	    <sec:authorize access="isAnonymous()"><a href="/user/signup">회원가입</a></sec:authorize>	    
+	    <sec:authorize access="isAnonymous()"><a href="/agreement">회원가입</a></sec:authorize>	    
 		<sec:authorize access="hasAuthority('USER')"><a href="/user/info">내정보</a></sec:authorize><br>
 	    <sec:authorize access="hasAuthority('ADMIN')"><a href="/user/info">어드민 정보</a></sec:authorize><br>
 	    <sec:authorize access="hasAuthority('ADMIN')"><a href="/user/admin">admin</a></sec:authorize><br>

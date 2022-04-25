@@ -56,19 +56,16 @@ function infoupdate (){
         contentType:"application/json; charset=utf-8",
         dataType:"json",
         success: function(data) {
-			if (data == 1) {
-				alert("성공인거 같냐?");
+			if (data == true) {
+				alert("정보 변경 완료");
 			} else {
-				alert("실패다 때꺄");
+				alert("정보 변경 실패");
 			}
 		},
 		error: function() {
-			alert("바보");
+			alert("정보 변경 실패");
 		}
         
-        /* beforeSend : function(xhr) {
-        xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-        } */
     }); //ajax통신으로 데이터를 json으로 변경 후 insert
 
 }

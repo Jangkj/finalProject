@@ -17,5 +17,5 @@ public interface MemberService extends UserDetailsService {
      public PasswordEncoder passwordEncoder();
      public MemberDTO getInfo(String m_mail);
      public int checkEmail(String m_mail);
-     public int updateUser(Map<String, Object> param);
+     public boolean updateUser(Map<String, Object> param);
 }

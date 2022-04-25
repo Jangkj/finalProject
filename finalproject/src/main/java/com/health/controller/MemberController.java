@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.health.dto.MemberDTO;
@@ -114,7 +115,7 @@ public class MemberController {
 	}
 
 	// 약관동의 페이지 오픈
-	@RequestMapping(value = "/user/agreement", method = RequestMethod.GET)
+	@GetMapping("/agreement")
 	public String agreement() {
 		return "agreement";
 	}
@@ -125,12 +126,24 @@ public class MemberController {
 		return "infoupdate";
 	}
 
+	// 회원정보 변경 결과값 반환
 	@PostMapping("/user/info/infoupdate/result")
-	public @ResponseBody int update(@RequestBody Map<String, Object> param) {
+	public @ResponseBody boolean update(@RequestBody Map<String, Object> param) {
 		System.out.println(param);
-		
-		int result = memberservice.updateUser(param);
+
+		boolean result = memberservice.updateUser(param);
 		return result;
 	}
 
+	/*
+	// 로그인 에러송출용 - 미완
+	@GetMapping("/user/loginPage")
+	public String dispLogin(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "exception", required = false) String exception, Model model) {
+		model.addAttribute("error", error);
+		model.addAttribute("exception", exception);
+		return "login";
+	}
+
+	*/
 }

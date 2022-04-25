@@ -83,7 +83,7 @@ public class MemberServiceImpl implements MemberService {
 	
 
 	@Override
-	public int updateUser(Map<String, Object> param) {
+	public boolean updateUser(Map<String, Object> param) {
 		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
 		
 		if (!param.get("old_pw").equals("")) { //비밀번호 바뀔때
@@ -97,7 +97,7 @@ public class MemberServiceImpl implements MemberService {
 				principal.setPassword(encodedPassword);
 				param.put("m_pw", encodedPassword);
 			}else {
-				return 2;
+				return false;
 			}
 
 		}else {
@@ -106,7 +106,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		
 		memberdao.updateMember(param);
-		return 1;
+		return true;
 	}	
 
 }

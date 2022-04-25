@@ -201,7 +201,7 @@ self.location ="/user/update";
                     </div>
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
                         <label for="inputname">이름</label>
-                        <input type="name" class="form-control mt-1" id="name" name="m_name" value="${user.password }" maxlength="20" readonly="readonly">
+                        <input type="name" class="form-control mt-1" id="name" name="m_name" value="${user.m_name }" maxlength="20" readonly="readonly">
                         
                     </div>                   
 

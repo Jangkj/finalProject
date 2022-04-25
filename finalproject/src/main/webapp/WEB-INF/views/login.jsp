@@ -151,7 +151,7 @@
 	          <div class="card-body" style="height: 350px; padding: 55px 20px 0px 20px;">
 	            <h5 class="card-title text-center">Log In</h5>
 	            <form class="form-signin" method="post" action="/login">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 		            <div class="form-label-group">
 		              <input type="text" id="id" name="username" class="form-control" placeholder="id" required autofocus>
 		            </div><br>
@@ -166,7 +166,7 @@
 		            <!-- <hr class="my-4">
 		            Forgot your <a href="javascript:void(0)" onclick="findid()">ID</a> or 
 		            				<a href="javascript:void(0)" onclick="findpassword()">Password</a>?   비번찾기-->
-		            <button style="float: right; margin-right: 100px" class="btn btn-lg btn-secondary btn-block text-uppercase" onclick="location='/user/agreement'">Join</button>
+		            <button style="float: right; margin-right: 100px" class="btn btn-lg btn-secondary btn-block text-uppercase" onclick="location='/agreement'">Join</button>
 	            </form>
 	          </div>
 	        </div>
