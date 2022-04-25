@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.health.service.MemberService;
@@ -27,27 +28,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	MemberService userService;
 	
+	@Autowired
+    public AuthenticationFailureHandler authenticationFailureHandler;
+
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
-			.antMatchers("/", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
-			.antMatchers("/user/admin/**").access("hasAuthority('ADMIN')")
+			.antMatchers("/**", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
+			.antMatchers("/user/admin/**").access("hasAuthority('ADMIN')")			
+			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정	
 			
-			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정
-			
-			.antMatchers("/**").permitAll()
-			
+						
 			.anyRequest().permitAll()//authenticated()
 			.and()
+			
 			.formLogin().loginPage("/user/loginPage")
-			.loginProcessingUrl("/login")
+			.loginProcessingUrl("/user/j_spring_security_check")			
+			.failureHandler(authenticationFailureHandler)
+			.usernameParameter("username")
+            .passwordParameter("password")
 			.defaultSuccessUrl("/user/login/result")
 			.permitAll() // 로그인 설정
 			.and()
+			
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) // 로그아웃 설정
-			.logoutSuccessUrl("/login").invalidateHttpSession(true) //user/logout/result
+			.logoutSuccessUrl("/user/loginPage").invalidateHttpSession(true) //user/logout/result
 			.and()
+			
 			.exceptionHandling().accessDeniedPage("/user/denied") // 403 예외처리 핸들링
 			.and()
 			.csrf().disable();

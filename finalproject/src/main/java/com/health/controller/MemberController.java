@@ -68,11 +68,13 @@ public class MemberController {
 
 	}
 
+	
 	// 로그인 페이지
-	@GetMapping("/user/loginPage")
+	@RequestMapping(value="/user/loginPage")
 	public String dispLogin() {
 		return "login";
 	}
+	
 
 	// 로그인 결과 페이지
 	@GetMapping("/user/login/result")
@@ -135,15 +137,6 @@ public class MemberController {
 		return result;
 	}
 
-	/*
-	// 로그인 에러송출용 - 미완
-	@GetMapping("/user/loginPage")
-	public String dispLogin(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "exception", required = false) String exception, Model model) {
-		model.addAttribute("error", error);
-		model.addAttribute("exception", exception);
-		return "login";
-	}
 
-	*/
+	
 }

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 
 <!DOCTYPE html>
 <html lang="kr">
@@ -144,25 +147,29 @@
     </div>
 
     <!-- Start login or sighup -->
+    
 	<div class="container" style="margin-bottom: 150px">
 	    <div class="row">
 	      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 	        <div class="card card-signin my-5">
 	          <div class="card-body" style="height: 350px; padding: 55px 20px 0px 20px;">
 	            <h5 class="card-title text-center">Log In</h5>
-	            <form class="form-signin" method="post" action="/login">
-					<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+	            <c:url value="j_spring_security_check" var="loginUrl" />
+	            <form class="form-signin" method="post" action="${loginUrl }">
+					<c:if test="${param.error != null }">
+						<p style="color:red;">							
+						 	${error_message }
+						</p>
+					</c:if>
+							<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 		            <div class="form-label-group">
 		              <input type="text" id="id" name="username" class="form-control" placeholder="id" required autofocus>
 		            </div><br>
 		            <div class="form-label-group" style="margin-bottom: 30px">
 		              <input type="password" id="pwd" name="password" class="form-control" placeholder="Password" required>
 		            </div>
-					    <div th:if="${param.error}">
-					        <p th:text="${exception}" class="alert alert-danger"></p>
-					    </div>
-
-							<button style="margin-left: 100px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log in</button>
+						
+					<button style="margin-left: 100px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log in</button>
 		            <!-- <hr class="my-4">
 		            Forgot your <a href="javascript:void(0)" onclick="findid()">ID</a> or 
 		            				<a href="javascript:void(0)" onclick="findpassword()">Password</a>?   비번찾기-->
@@ -173,12 +180,7 @@
 	      </div>
 	    </div>
   </div>
-  	<%-- <form action="/login" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        <input type="text" name="username" placeholder="이메일 입력해주세요">
-        <input type="password" name="password" placeholder="비밀번호">
-        <button type="submit">로그인</button>
-    </form>  --%>   
+
 
     <!-- End log in --> 
 
