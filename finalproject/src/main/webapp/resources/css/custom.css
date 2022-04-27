@@ -1,3 +1,97 @@
 /*
 Custom Css
 */
+#insertptuser{width:100%;}
+#saveasptuser{width:100%;}
+#pr_info{width:50%;}
+#insertptroutine{width:50%;margin-left:25%;}
+.bg-pt-information-image{background-image:url('/images/frank1.jpg');}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;  
+  font-family: Pretendard;
+}
+
+/* 달력 */
+
+.rap {
+  padding: 0 1.4rem;
+}
+
+.dateHead div {
+  background: #232833;
+  color: #fff;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+}
+
+.dateBoard div {
+  color: #222;
+  font-weight: bold;
+  padding:15%;
+  border-radius: .2rem;
+  border: 1px solid #eee;
+}
+
+.noColor {
+  background: #eee;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.dateBoard div.check{
+	color: #fff;
+	background:#232833;
+}
+
+/*=====*/
+/* 루틴생성 부분 */
+table.type06 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 10px;
+  vertical-align: middle;
+}
+table.type06 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  vertical-align: top;
+}
+table.type06 td {
+  width: 350px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  vertical-align: top;
+}
+table.type06 .even {
+  background: #e9eef5;
+}
+/*===========*/
+
+/*===startpt====*/
+.startpt_count{
+	text-align:right;
+	color: #6d6d6d;
+}
+.start_pt{
+  padding-top:10%;
+  border-bottom: 1px solid #ccc;
+}
+/*=============*/
