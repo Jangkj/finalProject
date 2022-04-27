@@ -3,9 +3,12 @@ package com.health.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.health.dto.CartDTO;
 import com.health.dto.ProductDTO;
 
+@Mapper
 public interface CartDAO {
 
 	List<CartDTO> cartQueryById(int m_num) throws Exception;
