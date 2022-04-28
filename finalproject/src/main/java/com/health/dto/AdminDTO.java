@@ -3,44 +3,37 @@ package com.health.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 public class AdminDTO {
-	String p_num;
 	String prod_num;
 	String category_num;
 	String prod_title;
 	String prod_price;
 	String prod_inventory;
 	MultipartFile prod_img;
-//	String prod_img;
-	String prod_description;
-	String prod_fee;
-	String prod_large;
-	String prod_medium;
-	String prod_small;
+	MultipartFile prod_description;
 	String view_count;
 	String prod_point;
+	String prod_img_name;
+	String prod_description_name;
+	
+	public String getProd_description_name() {
+		return prod_description_name;
+	}
+	public void setProd_description_name(String prod_description_name) {
+		this.prod_description_name = prod_description_name;
+	}
 	public String getProd_point() {
 		return prod_point;
 	}
 	public void setProd_point(String prod_point) {
 		this.prod_point = prod_point;
 	}
-
-
-	String prod_img_name;
-	
-	
 	public String getProd_img_name() {
 		return prod_img_name;
 	}
 	public void setProd_img_name(String prod_img_name) {
 		this.prod_img_name = prod_img_name;
 	}
-	public String getP_num() {
-		return p_num;
-	}
-	public void setP_num(String p_num) {
-		this.p_num = p_num;
-	}
+
 	public String getProd_num() {
 		return prod_num;
 	}
@@ -71,52 +64,18 @@ public class AdminDTO {
 	public void setProd_inventory(String prod_inventory) {
 		this.prod_inventory = prod_inventory;
 	}
-
 	
 	public MultipartFile getProd_img() { 
 		return prod_img; 
 	}
-	 
-//	public String getProd_img() {
-//		return prod_img;
-//	}
-	
 	public void setProd_img(MultipartFile prod_img) {
 		this.prod_img = prod_img;
 	}
-
-//	public void setProd_img(String prod_img) {
-//		this.prod_img = prod_img;
-//	}
-	public String getProd_description() {
+	public MultipartFile getProd_description() {
 		return prod_description;
 	}
-	public void setProd_description(String prod_description) {
+	public void setProd_description(MultipartFile prod_description) {
 		this.prod_description = prod_description;
-	}
-	public String getProd_fee() {
-		return prod_fee;
-	}
-	public void setProd_fee(String prod_fee) {
-		this.prod_fee = prod_fee;
-	}
-	public String getProd_large() {
-		return prod_large;
-	}
-	public void setProd_large(String prod_large) {
-		this.prod_large = prod_large;
-	}
-	public String getProd_medium() {
-		return prod_medium;
-	}
-	public void setProd_medium(String prod_medium) {
-		this.prod_medium = prod_medium;
-	}
-	public String getProd_small() {
-		return prod_small;
-	}
-	public void setProd_small(String prod_small) {
-		this.prod_small = prod_small;
 	}
 	public String getView_count() {
 		return view_count;
@@ -124,11 +83,11 @@ public class AdminDTO {
 	public void setView_count(String view_count) {
 		this.view_count = view_count;
 	}
-	public AdminDTO(String p_num, String prod_num, String category_num, String prod_title, String prod_price, String prod_inventory,
-			MultipartFile prod_img, String prod_description, String prod_fee, String prod_large, String prod_medium,
-			String prod_small, String view_count) {
+
+	public AdminDTO(String prod_num, String category_num, String prod_title, String prod_price, String prod_inventory,
+			MultipartFile prod_img, MultipartFile prod_description, String view_count, String prod_point,
+			String prod_img_name, String prod_description_name) {
 		super();
-		this.p_num = p_num;
 		this.prod_num = prod_num;
 		this.category_num = category_num;
 		this.prod_title = prod_title;
@@ -136,14 +95,11 @@ public class AdminDTO {
 		this.prod_inventory = prod_inventory;
 		this.prod_img = prod_img;
 		this.prod_description = prod_description;
-		this.prod_fee = prod_fee;
-		this.prod_large = prod_large;
-		this.prod_medium = prod_medium;
-		this.prod_small = prod_small;
 		this.view_count = view_count;
+		this.prod_point = prod_point;
+		this.prod_img_name = prod_img_name;
+		this.prod_description_name = prod_description_name;
 	}
-
-	
 	public AdminDTO() {};
 	
 }

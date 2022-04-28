@@ -12,6 +12,8 @@ import com.health.dto.ProductDTO;
 @Repository("admindao") 
 public interface AdminDAO {
 	public int insertProduct(AdminDTO adto);
+	public int updateProduct(AdminDTO adto);
+	public int deleteProduct(AdminDTO adto);
 	
 	public List<AdminDTO> productlist();
 	public AdminDTO product(int code);
@@ -23,5 +25,8 @@ public interface AdminDAO {
 	public List<ProductDTO> testlist2(int pagenum, int contentnum, int categorynum);
 	public int testcount();
 	public int testcount2(int categorynum);
+	
+	public AdminDTO modifysetting(int productnum);
+	
 	
 }

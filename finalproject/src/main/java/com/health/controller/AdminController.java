@@ -23,12 +23,15 @@ import com.health.service.CategoryService;
 
 @Controller
 public class AdminController {
+	
 	@Autowired
 	@Qualifier("adminservice")
 	AdminService service;
+	
 	@Autowired
 	@Qualifier("categoryservice")
 	CategoryService cservice;
+	
 	@RequestMapping("/main_admin")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView();
@@ -36,60 +39,47 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/admininsert", method=RequestMethod.GET)
-	public String insertform() {
-		return "admin/insertform";
+	@RequestMapping(value="/admin/admininsert", method=RequestMethod.GET)
+	public ModelAndView insertform() {
+		ModelAndView mv= new ModelAndView();
+		List<CategoryDTO> clist = cservice.categorylistnotall();
+		mv.addObject("categorylist", clist);
+		mv.setViewName("admin/insertform");
+		return mv;
 	}
-	@RequestMapping(value="/admininsert", method=RequestMethod.POST)
-	public ModelAndView insertresult(@ModelAttribute AdminDTO adto) throws IOException {
+	@RequestMapping(value="/admin/admininsert", method=RequestMethod.POST)
+	public ModelAndView insertresult(@ModelAttribute AdminDTO adto, @RequestParam(defaultValue = "category_num") String categorynum) throws IOException {
 		MultipartFile mf1 = adto.getProd_img();
+		MultipartFile mf2 = adto.getProd_description();
 		
 		String savePath = "c:/upload/";
+		String loadPath = "http://localhost:8081/upload/";
 		if(!mf1.isEmpty()) {
 			String originname1 = mf1.getOriginalFilename();
 			String beforeext1 = originname1.substring(0, originname1.indexOf("."));
 			String ext1 = originname1.substring(originname1.indexOf("."));
-			File serverfile1 = new File(savePath + beforeext1+"("+UUID.randomUUID().toString()+")"+ext1); 
+			String route1 = beforeext1+"("+UUID.randomUUID().toString()+")"+ext1;
+			File serverfile1 = new File(savePath + route1); 
 			mf1.transferTo(serverfile1);
-			adto.setProd_img_name(savePath + beforeext1+"("+UUID.randomUUID().toString()+")"+ext1);
+			adto.setProd_img_name("<p><img class='card-img rounded-0 img-fluid' src=" + loadPath + route1 + "></p>");
 		}
-		
+		if(!mf2.isEmpty()) {
+			String originname2 = mf2.getOriginalFilename();
+			String beforeext2 = originname2.substring(0, originname2.indexOf("."));
+			String ext2 = originname2.substring(originname2.indexOf("."));
+			String route2 = beforeext2+"("+UUID.randomUUID().toString()+")"+ext2;
+			File serverfile2 = new File(savePath + route2); 
+			mf2.transferTo(serverfile2);
+			adto.setProd_description_name("<p style='text-align: center;' align='center'><br><img src="+ loadPath + route2 +"><br></p>");
+		}
 		int result = service.insertProduct(adto);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("result", result);
 		mv.setViewName("admin/insertresult");
 		return mv;
 	}
-//	@RequestMapping(value="/adminselect", method=RequestMethod.GET)
-//	public String selectform() {
-//		return "admin/selectform";
-//	}
-	
-	@RequestMapping("/productlist")
-	public ModelAndView productlist(){
-		ModelAndView mv= new ModelAndView();
-		List<AdminDTO> list = service.productlist();
-		mv.addObject("productlist", list);
-//		mv.setViewName("admin/productlist");
-		mv.setViewName("admin/selectform");
-		return mv;
-		//전체목록 = model
-	}
-	
-	@RequestMapping("/product")
-	public ModelAndView product(int code){
-		ModelAndView mv= new ModelAndView();
-		AdminDTO adto = service.product(code);
-		mv.addObject("admindto", adto);
-		mv.setViewName("admin/product");
-		return mv;		
-	}
-//	@RequestMapping(value="/tables")
-//	public String tables(Model model,@RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "10") String contentnum) throws Exception{
-//		service.execute(model, pagenum, contentnum);
-//		return "/tables";
-//	}
-	@RequestMapping(value="/adminselect")
+
+	@RequestMapping(value="/admin/adminselect")
 	public ModelAndView adminselect(Model model,@RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum, @RequestParam(defaultValue = "category_num") String categorynum) throws Exception{
 		ModelAndView mv= new ModelAndView();
 		service.execute(model, pagenum, contentnum, categorynum);
@@ -98,5 +88,72 @@ public class AdminController {
 		mv.setViewName("admin/adminselect");
 		return mv;
 	}
+	@RequestMapping(value="/admin/adminselect", method=RequestMethod.POST)
+	public ModelAndView admindelete(Model model,@ModelAttribute AdminDTO adto, @RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum, @RequestParam(defaultValue = "category_num") String categorynum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		service.execute(model, pagenum, contentnum, categorynum);
+		List<CategoryDTO> clist = cservice.categorylist();
+		mv.addObject("categorylist", clist);
+		mv.setViewName("admin/adminselect");
+		return mv;
+	}
+	@RequestMapping(value="/admin/adminmodify")
+	public ModelAndView adminmodifysetting(Model model, int productnum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		AdminDTO adto = service.modifysetting(productnum);
+		List<CategoryDTO> clist = cservice.categorylistnotall();
+		mv.addObject("categorylist", clist);
+		mv.addObject("admindto", adto);
+		mv.setViewName("admin/adminmodify");
+		return mv;
+	}
+	@RequestMapping(value="/admin/adminmodify", method=RequestMethod.POST)
+	public ModelAndView adminmodify(@ModelAttribute AdminDTO adto, String prod_img_before, String prod_description_before, int productnum) throws Exception{
+		MultipartFile mf1 = adto.getProd_img();
+		MultipartFile mf2 = adto.getProd_description();
+		String savePath = "c:/upload/";
+		String loadPath = "http://localhost:8081/upload/";
+		if(!mf1.isEmpty()) {
+			String originname1 = mf1.getOriginalFilename();
+			String beforeext1 = originname1.substring(0, originname1.indexOf("."));
+			String ext1 = originname1.substring(originname1.indexOf("."));
+			String route1 = beforeext1+"("+UUID.randomUUID().toString()+")"+ext1;
+			File serverfile1 = new File(savePath + route1); 
+			mf1.transferTo(serverfile1);
+			adto.setProd_img_name("<p><img class='card-img rounded-0 img-fluid' src=" + loadPath + route1 + "></p>");
+		}
+		else {
+			adto.setProd_img_name(prod_img_before);
+		}
+		if(!mf2.isEmpty()) {
+			String originname2 = mf2.getOriginalFilename();
+			String beforeext2 = originname2.substring(0, originname2.indexOf("."));
+			String ext2 = originname2.substring(originname2.indexOf("."));
+			String route2 = beforeext2+"("+UUID.randomUUID().toString()+")"+ext2;
+			File serverfile2 = new File(savePath + route2); 
+			mf2.transferTo(serverfile2);
+			adto.setProd_description_name("<p style='text-align: center;' align='center'><br><img src="+ loadPath + route2 +"><br></p>");
+			System.out.println(adto.getProd_description_name());
+		}
+		else {
+			adto.setProd_description_name(prod_description_before);
+		}
 
+		int result = service.updateProduct(adto);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("result", result);
+		mv.setViewName("admin/adminmodify");
+		return mv;
+	}
+	@RequestMapping(value="/admin/admindelete")
+	public ModelAndView admindelete(@ModelAttribute AdminDTO adto, Model model, @RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum, @RequestParam(defaultValue = "category_num") String categorynum, String productnum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		adto.setProd_num(productnum);
+		int result = service.deleteProduct(adto);
+		service.execute(model, pagenum, contentnum, categorynum);
+		List<CategoryDTO> clist = cservice.categorylist();
+		mv.addObject("categorylist", clist);
+		mv.setViewName("admin/adminselect");
+		return mv;
+	}
 }

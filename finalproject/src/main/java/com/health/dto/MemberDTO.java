@@ -1,39 +1,79 @@
 package com.health.dto;
 
-import java.util.Date;
+import java.util.Collection;
 
-public class MemberDTO {
-	int m_num;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-	String m_id, m_pw, m_name, m_hint, m_hintan, m_hp1, m_hp2, m_hp3, m_post1, m_post2, m_add1, m_add2, m_mail1,
-			m_mail2;
 
-	Date m_date;
+public class MemberDTO implements UserDetails {
+
+	private static final long serialVersionUID = 5177294317961485740L;
+
+	private int m_num;
+
+	private String m_mail;
 	
-	public MemberDTO() {}
+	private String m_pw;
+	
+	private String m_name;
+	
+	private boolean isAccountNonExpired;
+	private boolean isAccountNonLocked;
+	private boolean isCredentialsNonExpired;
+	private boolean isEnabled;
+	private Collection<? extends GrantedAuthority> authorities;
 	
 	
+	private String m_hp;
+	
+	private int m_post;
+	
+	
+	private String m_add1;
+	
+	
+	private String m_add2;
+	
+	
+	private String m_date;
 
-	public MemberDTO(int m_num, String m_id, String m_pw, String m_name, String m_hint, String m_hintan, String m_hp1,
-			String m_hp2, String m_hp3, String m_post1, String m_post2, String m_add1, String m_add2, String m_mail1,
-			String m_mail2, Date m_date) {
-		super();
-		this.m_num = m_num;
-		this.m_id = m_id;
-		this.m_pw = m_pw;
-		this.m_name = m_name;
-		this.m_hint = m_hint;
-		this.m_hintan = m_hintan;
-		this.m_hp1 = m_hp1;
-		this.m_hp2 = m_hp2;
-		this.m_hp3 = m_hp3;
-		this.m_post1 = m_post1;
-		this.m_post2 = m_post2;
-		this.m_add1 = m_add1;
-		this.m_add2 = m_add2;
-		this.m_mail1 = m_mail1;
-		this.m_mail2 = m_mail2;
-		this.m_date = m_date;
+	
+	
+	
+	@Override
+	public String getUsername() {
+		return m_mail;
+	}
+
+	@Override
+	public String getPassword() {
+		return m_pw;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return isAccountNonExpired;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return isAccountNonLocked;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return isCredentialsNonExpired;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return isEnabled;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
 	}
 
 	public int getM_num() {
@@ -44,22 +84,6 @@ public class MemberDTO {
 		this.m_num = m_num;
 	}
 
-	public String getM_id() {
-		return m_id;
-	}
-
-	public void setM_id(String m_id) {
-		this.m_id = m_id;
-	}
-
-	public String getM_pw() {
-		return m_pw;
-	}
-
-	public void setM_pw(String m_pw) {
-		this.m_pw = m_pw;
-	}
-
 	public String getM_name() {
 		return m_name;
 	}
@@ -68,60 +92,67 @@ public class MemberDTO {
 		this.m_name = m_name;
 	}
 
-	public String getM_hint() {
-		return m_hint;
+	public void setUsername(String m_mail) {
+		this.m_mail = m_mail;
 	}
 
-	public void setM_hint(String m_hint) {
-		this.m_hint = m_hint;
+	public void setPassword(String m_pw) {
+		this.m_pw = m_pw;
 	}
 
-	public String getM_hintan() {
-		return m_hintan;
+	public void setAccountNonExpired(boolean isAccountNonExpired) {
+		this.isAccountNonExpired = isAccountNonExpired;
 	}
 
-	public void setM_hintan(String m_hintan) {
-		this.m_hintan = m_hintan;
+	public void setAccountNonLocked(boolean isAccountNonLocked) {
+		this.isAccountNonLocked = isAccountNonLocked;
 	}
 
-	public String getM_hp1() {
-		return m_hp1;
+	public void setCredentialsNonExpired(boolean isCredentialsNonExpired) {
+		this.isCredentialsNonExpired = isCredentialsNonExpired;
 	}
 
-	public void setM_hp1(String m_hp1) {
-		this.m_hp1 = m_hp1;
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
 	}
 
-	public String getM_hp2() {
-		return m_hp2;
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
 	}
 
-	public void setM_hp2(String m_hp2) {
-		this.m_hp2 = m_hp2;
+	@Override
+	public String toString() {
+		return "User [username=" + m_mail + ", password=" + m_pw + ", name=" + m_name + ", isAccountNonExpired="
+				+ isAccountNonExpired + ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialsNonExpired="
+				+ isCredentialsNonExpired + ", isEnabled=" + isEnabled + "]";
 	}
 
-	public String getM_hp3() {
-		return m_hp3;
+	public MemberDTO(String m_mail, String m_pw, String m_name, boolean isAccountNonExpired, boolean isAccountNonLocked,
+			boolean isCredentialsNonExpired, boolean isEnabled) {
+		super();
+		this.m_mail = m_mail;
+		this.m_pw = m_pw;
+		this.m_name = m_name;
+		this.isAccountNonExpired = isAccountNonExpired;
+		this.isAccountNonLocked = isAccountNonLocked;
+		this.isCredentialsNonExpired = isCredentialsNonExpired;
+		this.isEnabled = isEnabled;
 	}
 
-	public void setM_hp3(String m_hp3) {
-		this.m_hp3 = m_hp3;
+	public String getM_hp() {
+		return m_hp;
 	}
 
-	public String getM_post1() {
-		return m_post1;
+	public void setM_hp(String m_hp) {
+		this.m_hp = m_hp;
 	}
 
-	public void setM_post1(String m_post1) {
-		this.m_post1 = m_post1;
+	public int getM_post() {
+		return m_post;
 	}
 
-	public String getM_post2() {
-		return m_post2;
-	}
-
-	public void setM_post2(String m_post2) {
-		this.m_post2 = m_post2;
+	public void setM_post(int m_post) {
+		this.m_post = m_post;
 	}
 
 	public String getM_add1() {
@@ -140,27 +171,12 @@ public class MemberDTO {
 		this.m_add2 = m_add2;
 	}
 
-	public String getM_mail1() {
-		return m_mail1;
-	}
-
-	public void setM_mail1(String m_mail1) {
-		this.m_mail1 = m_mail1;
-	}
-
-	public String getM_mail2() {
-		return m_mail2;
-	}
-
-	public void setM_mail2(String m_mail2) {
-		this.m_mail2 = m_mail2;
-	}
-
-	public Date getM_date() {
+	public String getM_date() {
 		return m_date;
 	}
 
-	public void setM_date(Date m_date) {
+	public void setM_date(String m_date) {
 		this.m_date = m_date;
 	}
+
 }

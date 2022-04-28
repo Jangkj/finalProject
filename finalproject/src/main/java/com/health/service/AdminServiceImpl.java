@@ -31,6 +31,30 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public AdminDTO modifysetting(int productnum) {
+		return adao.modifysetting(productnum);	
+	}
+	@Override
+	public int deleteProduct(AdminDTO adto) {
+		
+		return adao.deleteProduct(adto);
+	}
+
+	@Override
+	public int modify(String productnum) {
+
+
+		
+		return 0;
+	}
+
+
+	@Override
+	public int updateProduct(AdminDTO adto) {
+		return adao.updateProduct(adto);
+	}
+
+	@Override
 	public AdminDTO product(int code) {
 		return adao.product(code);
 	}
@@ -46,8 +70,12 @@ public class AdminServiceImpl implements AdminService {
         //dto 고쳐야함
         List<ProductDTO> testList = null;
        
+        System.out.println(categorynum);
+        if(categorynum.equals("0"))
+        	categorynum = "category_num";
         
         if(categorynum.equals("category_num")) {
+        	categorynum = "0";
             pagemaker.setTotalcount(adao.testcount()); // mapper 전체 게시글 개수를 지정한다
             pagemaker.setPagenum(cpagenum-1);   // 현재 페이지를 페이지 객체에 지정한다 -1 을 해야 쿼리에서 사용할수 있다
             pagemaker.setContentnum(ccontentnum); // 한 페이지에 몇개씩 게시글을 보여줄지 지정한다.
@@ -73,7 +101,6 @@ public class AdminServiceImpl implements AdminService {
             pagemaker.setPagenum(cpagenum-1);   // 현재 페이지를 페이지 객체에 지정한다 -1 을 해야 쿼리에서 사용할수 있다
             pagemaker.setContentnum(ccontentnum); // 한 페이지에 몇개씩 게시글을 보여줄지 지정한다.
             pagemaker.setCurrentblock(cpagenum); // 현재 페이지 블록이 몇번인지 현재 페이지 번호를 통해서 지정한다.
-            System.out.println(adao.testcount2(ccategorynum));
             pagemaker.setLastblock(pagemaker.getTotalcount()); // 마지막 블록 번호를 전체 게시글 수를 통해서 정한다.
 
             pagemaker.prevnext(cpagenum);//현재 페이지 번호로 화살표를 나타낼지 정한다.

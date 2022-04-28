@@ -5,22 +5,26 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.health.controller.AdminController;
-import com.health.controller.MemberController;
-import com.health.dao.AdminDAO;
-import com.health.dao.CategoryDAO;
-import com.health.dao.MemberDAO;
+import com.health.controller.PtController;
+import com.health.dao.ExercisetypeDAO;
+import com.health.dao.PtroutineDAO;
+import com.health.dao.PtroutineoneDAO;
+import com.health.dao.PtuserDAO;
+import com.health.dto.ExercisetypeDTO;
+import com.health.service.ExercisetypeService;
 
-import upload.UploadController;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = MemberController.class)
-@ComponentScan(basePackageClasses = AdminController.class)
-@MapperScan(basePackageClasses = MemberDAO.class)
-@MapperScan(basePackageClasses = AdminDAO.class)
-@MapperScan(basePackageClasses = CategoryDAO.class)
+@ComponentScan
+@ComponentScan(basePackageClasses = PtController.class)
+@ComponentScan(basePackageClasses = ExercisetypeDAO.class)
+@ComponentScan(basePackageClasses = ExercisetypeDTO.class)
+@ComponentScan(basePackageClasses = ExercisetypeService.class)
+@MapperScan(basePackageClasses = ExercisetypeDAO.class)
+@MapperScan(basePackageClasses = PtroutineDAO.class)
+@MapperScan(basePackageClasses = PtuserDAO.class)
+@MapperScan(basePackageClasses = PtroutineoneDAO.class)
 public class FinalprojectApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(FinalprojectApplication.class, args);
 	}

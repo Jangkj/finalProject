@@ -12,7 +12,8 @@ import com.health.dto.ProductDTO;
 @Mapper
 @Repository("categorydao") 
 public interface CategoryDAO {
-	public List<CategoryDTO> categorylist();
+	public List<CategoryDTO> categorylist(); // 카테고리 (all 포함 o)
+	public List<CategoryDTO> categorylistnotall(); // 카테고리 (all 포함 x)
 
 	
 	

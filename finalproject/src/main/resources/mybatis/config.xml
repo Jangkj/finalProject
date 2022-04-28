@@ -5,12 +5,15 @@
 <configuration>
 <!-- 1. sql 실행 결과 XXXDTO 매핑 -->
 <typeAliases>
-	<typeAlias type="com.health.dto.MemberDTO" alias="memberdto"/>
+	<typeAlias type="com.health.dto.ExercisetypeDTO" alias="exercisetypedto"/>
+	<typeAlias type="com.health.dto.PtroutineDTO" alias="ptroutinedto"/>
+	<typeAlias type="com.health.dto.PtuserDTO" alias="ptuserdto"/>
+	<typeAlias type="com.health.dto.PtroutineoneDTO" alias="ptroutineonedto"/>
+	<typeAlias type="com.health.dto.WorkoutDTO" alias="Workoutdto"/>
 	<typeAlias type="com.health.dto.AdminDTO" alias="admindto"/>
 	<typeAlias type="com.health.dto.ProductDTO" alias="productDTO"/>
 	<typeAlias type="com.health.dto.CategoryDTO" alias="categorydto"/>
+	<typeAlias type="com.health.dto.MemberDTO" alias="memberdto"/>
 </typeAliases>
-
-
 </configuration>
 

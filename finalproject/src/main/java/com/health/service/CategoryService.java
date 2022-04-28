@@ -9,6 +9,7 @@ import com.health.dto.CategoryDTO;
 
 public interface CategoryService {
 	
-	public List<CategoryDTO> categorylist(); //매핑sql id 동일하지 않아도 된다
+	public List<CategoryDTO> categorylist(); // 카테고리 (all 포함 o)
+	public List<CategoryDTO> categorylistnotall(); // 카테고리 (all 포함 x)
 
 }

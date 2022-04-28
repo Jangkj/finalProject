@@ -24,7 +24,10 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<CategoryDTO> categorylist() {
 		return cdao.categorylist();
 	}
-	
+	@Override
+	public List<CategoryDTO> categorylistnotall() {
+		return cdao.categorylistnotall();
+	}
 	
 
 }
