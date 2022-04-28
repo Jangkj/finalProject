@@ -46,10 +46,10 @@ public class AdminController {
 		MultipartFile mf1 = adto.getProd_img();
 		MultipartFile mf2 = adto.getProd_description();
 		
-		String savePath = "c:/upload/";
-		String loadPath = "http://localhost:8081/upload/";
-		//String savePath = "/usr/mydir/upload";
-		//String loadPath = "http://49.50.164.132:8080/upload/"
+		//String savePath = "c:/upload/";
+		//String loadPath = "http://localhost:8081/upload/";
+		String savePath = "/usr/mydir/upload";
+		String loadPath = "http://49.50.164.132:8080/upload/";
 		
 		
 		if(!mf1.isEmpty()) {
@@ -109,10 +109,10 @@ public class AdminController {
 	public ModelAndView adminmodify(@ModelAttribute AdminDTO adto, String prod_img_before, String prod_description_before, int productnum) throws Exception{
 		MultipartFile mf1 = adto.getProd_img();
 		MultipartFile mf2 = adto.getProd_description();
-		String savePath = "c:/upload/";
-		String loadPath = "http://localhost:8081/upload/";
-		//String savePath = "/usr/mydir/upload";
-		//String loadPath = "http://49.50.164.132:8080/upload/"
+		//String savePath = "c:/upload/";
+		//String loadPath = "http://localhost:8081/upload/";
+		String savePath = "/usr/mydir/upload";
+		String loadPath = "http://49.50.164.132:8080/upload/";
 
 		if(!mf1.isEmpty()) {
 			String originname1 = mf1.getOriginalFilename();
