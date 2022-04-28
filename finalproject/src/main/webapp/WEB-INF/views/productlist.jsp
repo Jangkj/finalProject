@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>MultiHealth</title>
-<script src="<%=request.getContextPath() %>/resources/jquery-3.6.0.min.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
+	
 
 
 </head>
@@ -16,7 +16,7 @@
 <body>
 
 	<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
-
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
 	<!-- Modal -->
 	<div class="modal fade bg-white" id="templatemo_search" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -382,8 +382,8 @@
 		</div>
 	</section>
 	<!--End Brands-->
-
 <%@include file ="../views/include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
+<script src="<%=request.getContextPath() %>/resources/jquery-3.6.0.min.js"></script>
 
 
 	<script type="text/javascript">

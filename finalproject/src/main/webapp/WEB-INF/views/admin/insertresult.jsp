@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>MultiHealth</title>
+	<title>상품 조회</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 </head>
@@ -52,155 +52,29 @@
 
 			<div class="col-lg-9">
 				<div class="row">
-					<div class="col-md-6">
-						<ul class="list-inline shop-top-menu pb-3 pt-1">
+					<div class="col-md-6" >
+						<ul class="list-inline shop-top-menu pb-3 pt-1" style="text-align: center;">
 							<li class="list-inline-item"><a
 								class="h3 text-dark text-decoration-none mr-3" href="#">상품
-									조회</a></li>
-
+									등록 성공</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 pb-4">
-						<div class="d-flex">
-							<select class="form-control" id="selectbox" " name="selectbox"
-								onchange="chageLangSelect(1)">
-								<c:forEach items="${categorylist }" var="cdto"
-									varStatus="status">
-									<option value="${cdto.category_num}" <c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
-								</c:forEach>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-3 pb-4">
-						<div class="d-flex">
-								<!-- 이거 9 18 27 -->
-							<select class="form-control" name="contentnum" id="contentnum" onchange="page(1)">
-								<option value="9"
-									<c:if test="${page.getContentnum() == 9 }">selected="selected"</c:if>>9
-									개</option>
-								<option value="18"
-									<c:if test="${page.getContentnum() == 18 }">selected="selected"</c:if>>18
-									개</option>
-								<option value="27"
-									<c:if test="${page.getContentnum() == 27 }">selected="selected"</c:if>>27
-									개</option>
-							</select>
-						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<c:forEach items="${productlist }" var="dto">
-						<div class="col-md-4">
-							<div class="card mb-4 product-wap rounded-0">
-								<div class="card rounded-0">
-									${dto.prod_img_name }
-									<div
-										class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-										<ul class="list-unstyled">
-											<li><a class="btn btn-success text-white"
-												href="shop-single.html"><i class="far fa-heart"></i></a></li>
-											<li><a class="btn btn-success text-white mt-2"
-												href="shop-single.html"><i class="far fa-eye"></i></a></li>
-											<li><a class="btn btn-success text-white mt-2"
-												href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-											<li><a class="btn btn-success text-white mt-2"
-												href="adminmodify?productnum=${dto.prod_num }"><i class="fab fa-medium-m"></i></a></li>
-											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.prod_num }"
-											    ><i class="fas fa-trash"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								
-								<!-- Modal -->
-								<div class="modal fade bg-white" id="delete_modal"
-									tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-									aria-hidden="true">
-									<div class="modal-dialog modal-lg" role="document">
-	
-										
-										<form action="admindelete" method="get"
-											class="modal-content modal-body border-0 p-0" >
-											<h1 style="text-align: center;">삭제하시겠습니까?</h1>
-											<br>
-											<br>
-											<div>
-												<input type="hidden" name=productnum id=productnum value="" />
-												<div style="display: inline; float: left;">
-													<button type="submit"
-														class="input-group-text bg-primary text-light">
-														<i class="fa fa-fw fa-check text-white"></i>
-													</button>
-												</div>
-												<div style="display: inline-block; float:right;">
-													<button type="button"
-														class="input-group-text bg-primary text-light"
-														data-bs-dismiss="modal" aria-label="Close">
-														<i class="fa fa-fw fa-times text-white"></i>
-													</button>
-												</div>
-											</div>
-
-	
-										</form>
-
-									</div>
-								</div>
-								<div class="card-body" style="display:inline-block; height:166px">
-									<a style="display:inline-block; height:70px" href="shop-single.html" class="h3 text-decoration-none">${dto.prod_title }</a>
-									<ul
-										class="w-100 list-unstyled d-flex justify-content-between mb-0">
-										<li class="pt-2"><span
-											class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-										</li>
-									</ul>
-									<ul class="list-unstyled d-flex justify-content-center mb-1">
-										<li><i class="text-warning fa fa-star"></i> <i
-											class="text-warning fa fa-star"></i> <i
-											class="text-muted fa fa-star"></i> <i
-											class="text-muted fa fa-star"></i> <i
-											class="text-muted fa fa-star"></i></li>
-									</ul>
-									<p class="text-center mb-0">${dto.prod_price }</p>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-
+				<div class="row" style="padding-left:25%; padding-right:25%">
+				<p><br></p>
+				<p><br></p>
+				<p><br></p>
+					<button class="btn btn-dark" onclick="location.href='http://49.50.164.132:8080/admin/admininsert'">상품 등록</button>
+					<p><br></p>
+					<button class="btn btn-dark" onclick="location.href='http://49.50.164.132:8080/admin/adminselect'">상품 조회</button>
+				<p><br></p>
+				<p><br></p>
+				<p><br></p>
 				</div>
 
-				<div div="row">
-					<ul class="pagination pagination-lg justify-content-end">
-						<c:if test="${page.prev}">
-							<li class="page-item"><a
-								class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
-								href="javascript:page(${page.getStartPage()-1});">&laquo;</a></li>
-						</c:if>
-
-						<c:forEach begin="${page.getStartPage()}"
-							end="${page.getEndPage()}" var="idx">
-							<li class="page-item"><a
-								class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-								href="javascript:page(${idx});">${idx}</a></li>
-						</c:forEach>
-
-
-						<c:if test="${page.next}">
-							<li class="page-item"><a
-								class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-								href="javascript:page(${page.getEndPage()+1});">&raquo;</a></li>
-						</c:if>
-
-					</ul>
-				</div>
 			</div>
 
 		</div>
@@ -214,44 +88,6 @@
 
 
 
-
-	<script type="text/javascript">
-	/*한페이지당 게시물 */
-	function page(idx){
-	  var pagenum = idx;
-	  var contentnum = $("#contentnum option:selected").val();
-	  var selectval = $("#selectbox option:selected").val();
-	  if(contentnum == 9){
-// 	    location.href="${pageContext.request.contextPath}/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-		  location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-	  }else if(contentnum == 18){
-	    location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-	
-	  }else if(contentnum == 27){
-	    location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-	
-	  }
-	}
-	</script>
-	<script>
-		function chageLangSelect(idx){ 
-			var pagenum = idx;
-			var contentnum = $("#contentnum option:selected").val();
-			var selectval = $("#selectbox option:selected").val(); // select element에서 선택된 option의 value가 저장된다.
-			for(var i = 0; i < 22; i++){
-				if(selectval == i){
-					location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-				}
-			}
-		}
-	</script>
-	<script>
-	$(document).on("click", ".delete_modal", function () {
-		 console.log($(this).data('num'));
-	     var prod_num = $(this).data('num');
-	     $("#productnum").val(prod_num);
-	});
-	</script>
 	<!-- End Script -->
 </body>
 </html>

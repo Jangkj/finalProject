@@ -53,7 +53,7 @@
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-10">
-							<form class="form-horizontal" action="insertresult" method="post"
+							<form class="form-horizontal" action="/admin/insertresult" method="post"
 								enctype="multipart/form-data">
 								<input type=hidden name=p_num value=null><br>
 								<div class="form-group">

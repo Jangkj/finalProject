@@ -102,7 +102,7 @@
                                     </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button id="check_module" type="button" class="btn btn-dark btn-lg" value="buy" >Buy</button>
+                                        <button id="check_module" style="display:none;" type="button" class="btn btn-dark btn-lg" value="buy" >Buy</button>
                                     </div>
                                     
                                     <div class="col d-grid">

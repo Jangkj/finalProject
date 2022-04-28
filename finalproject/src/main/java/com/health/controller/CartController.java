@@ -178,8 +178,8 @@ public class CartController {
 				// 내가 장바구니에 담아 놓은 상품 정보들
 				if (cart.getProd_num() == prod_num) {
 					System.out.println("장바구니에 담을 제품  :" + product_count);
-					System.out.println("지금 장바구니에 있는 제품 :" + cart.getCart_num());
-					product_count += cart.getCart_num();
+					System.out.println("지금 장바구니에 있는 제품 :" + cart.getProduct_count());
+					product_count += cart.getProduct_count();
 					System.out.println("이 제품 수량으로 업데이트 됩니다 :" + product_count);
 					cartService.updateCart(prod_num, product_count, m_num);
 					return "이미 장바구니 담겨 있는 상품입니다. 장바구니에 선택하신 수량이 더해집니다";

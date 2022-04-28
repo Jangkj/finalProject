@@ -14,7 +14,7 @@
 
 <body>
 <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
-
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
