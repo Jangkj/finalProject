@@ -145,7 +145,7 @@
 							<input type=hidden id=view_count name=view_count value='${admindto.view_count}'>
 							<input type=hidden id=prod_point name=prod_point value='${admindto.prod_point}'>
 							<input type="submit" style="float:left;" class="btn btn-primary" value="상품수정"/>
-							<input type="button" style="float:right; margin-right:16%;" class="btn btn-primary" onclick="location.href = 'http://localhost:8081/admin/adminselect'" value="취소"/>
+							<input type="button" style="float:right; margin-right:16%;" class="btn btn-primary" onclick="location.href = 'http://49.50.164.132:8080/admin/adminselect'" value="취소"/>
 						</form>
 
 					</div>
@@ -160,134 +160,6 @@
 	<!-- End Content -->
 
 
-	<!-- Start Brands -->
-	<section class="bg-light py-5">
-		<div class="container my-4">
-			<div class="row text-center py-3">
-				<div class="col-lg-6 m-auto">
-					<h1 class="h1">Our Brands</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod Lorem ipsum dolor sit amet.</p>
-				</div>
-				<div class="col-lg-9 m-auto tempaltemo-carousel">
-					<div class="row d-flex flex-row">
-						<!--Controls-->
-						<div class="col-1 align-self-center">
-							<a class="h1" href="#multi-item-example" role="button"
-								data-bs-slide="prev"> <i
-								class="text-light fas fa-chevron-left"></i>
-							</a>
-						</div>
-						<!--End Controls-->
-
-						<!--Carousel Wrapper-->
-						<div class="col">
-							<div class="carousel slide carousel-multi-item pt-2 pt-md-0"
-								id="multi-item-example" data-bs-ride="carousel">
-								<!--Slides-->
-								<div class="carousel-inner product-links-wap" role="listbox">
-
-									<!--First slide-->
-									<div class="carousel-item active">
-										<div class="row">
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_01.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_02.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_03.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_04.png"
-													alt="Brand Logo"></a>
-											</div>
-										</div>
-									</div>
-									<!--End First slide-->
-
-									<!--Second slide-->
-									<div class="carousel-item">
-										<div class="row">
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_01.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_02.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_03.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_04.png"
-													alt="Brand Logo"></a>
-											</div>
-										</div>
-									</div>
-									<!--End Second slide-->
-
-									<!--Third slide-->
-									<div class="carousel-item">
-										<div class="row">
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_01.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_02.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_03.png"
-													alt="Brand Logo"></a>
-											</div>
-											<div class="col-3 p-md-5">
-												<a href="#"><img class="img-fluid brand-img"
-													src="http://localhost:8081/assets/img/brand_04.png"
-													alt="Brand Logo"></a>
-											</div>
-										</div>
-									</div>
-									<!--End Third slide-->
-
-								</div>
-								<!--End Slides-->
-							</div>
-						</div>
-						<!--End Carousel Wrapper-->
-
-						<!--Controls-->
-						<div class="col-1 align-self-center">
-							<a class="h1" href="#multi-item-example" role="button"
-								data-bs-slide="next"> <i
-								class="text-light fas fa-chevron-right"></i>
-							</a>
-						</div>
-						<!--End Controls-->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--End Brands-->
 
 <%@include file ="../include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
 
@@ -301,7 +173,7 @@
 			var selectval = $("#selectbox option:selected").val(); // select element에서 선택된 option의 value가 저장된다.
 			for (var i = 1; i < 22; i++) {
 				if (selectval == i) {
-					location.href = "http://localhost:8081/admin/adminselect?pagenum="
+					location.href = "http://49.50.164.132:8080/admin/adminselect?pagenum="
 							+ pagenum
 							+ "&contentnum="
 							+ contentnum

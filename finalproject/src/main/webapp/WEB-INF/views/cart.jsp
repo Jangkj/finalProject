@@ -122,7 +122,7 @@ $(function() {
 		$.ajax({
 			type: "post",
 			data: {objParams: JSON.stringify(objParams)},
-			url: "http://localhost:8081/cart/gettotal", //총가격 
+			url: "http://49.50.164.132:8080/cart/gettotal", //총가격 
 			success: function(data) {
 				 $('#totalPrice').text(data);
 			},
@@ -138,7 +138,7 @@ function deleteCart(id) {
 	$.ajax({
 		type: "post",
 		data: {prod_id : prod_id},
-		url: "http://localhost:8081/cart/deletecart",
+		url: "http://49.50.164.132:8080/cart/deletecart",
 		success: function(data){
 			alert(data);
 			window.location.reload();

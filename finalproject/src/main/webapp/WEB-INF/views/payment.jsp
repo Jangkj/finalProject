@@ -322,7 +322,7 @@
 				buyer_tel : `${user.m_hp}`,
 				buyer_addr : `${user.m_add1}`,
 				buyer_postcode : `${user.m_add2}`,
-				m_redirect_url : 'http://www.localhost8081/cart'
+				m_redirect_url : 'http://49.50.164.132:8080/cart'
 
 			}, function(rsp) {
 				console.log(rsp);
@@ -389,7 +389,7 @@
 				buyer_tel : '010-1234-5678',
 				buyer_addr : '서울특별시 강남구 삼성동',
 				buyer_postcode : '123-456',
-				m_redirect_url : 'http://www.localhost8081/cart'
+				m_redirect_url : 'http://49.50.164.132:8080/cart'
 
 			}, function(rsp) {
 				console.log(rsp);
@@ -399,7 +399,7 @@
 					msg += '상점 거래ID : ' + rsp.merchant_uid;
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
-					window.location.href = "/cart";
+					window.location.href = "/";
 
 				} else {
 					var msg = '결제에 실패하였습니다.';

@@ -198,10 +198,10 @@ $('#insertCart').click(function() {
     $.ajax({
        type: "post",
        data: {prod_num : prod_num, product_count : inputQuantity},
-       url: "http://localhost:8081/cart/insertcart",
+       url: "http://49.50.164.132:8080/cart/insertcart",
        success: function(data){
           alert(data);
-          window.location.href="http://localhost:8081/cart"
+          window.location.href="http://49.50.164.132:8080/cart"
        }//succee
     })//ajax end
 })

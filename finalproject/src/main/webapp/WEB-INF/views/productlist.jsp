@@ -53,7 +53,7 @@
                         <c:forEach items="${categorylist }" var="cdto" varStatus="status">
                         	<c:if test="${cdto.category_num == 1}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=1"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=1"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
 							</c:forEach>
@@ -68,22 +68,22 @@
                         <c:forEach items="${categorylist }" var="cdto" varStatus="status">
                         	<c:if test="${cdto.category_num == 2}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=2"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=2"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 3}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=3"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=3"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 4}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=4"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=4"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 5}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=5"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=5"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
 							</c:forEach>
@@ -98,77 +98,77 @@
                         <c:forEach items="${categorylist }" var="cdto" varStatus="status">
                         <c:if test="${cdto.category_num == 6}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=7"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=7"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 7}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=7"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=7"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 8}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=8"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=8"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 9}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=9"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=9"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 10}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=10"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=10"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 11}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=11"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=11"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 12}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=12"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=12"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 13}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=13"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=13"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 14}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=14"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=14"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 16}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=16"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=16"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 17}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=17"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=17"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 18}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=18"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=18"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 19}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=19"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=19"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 20}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=20"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=20"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	<c:if test="${cdto.category_num == 21}">
                         		<li id=list name=list value="${cdto.category_name}">
-								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=21"  >${cdto.category_name}</a>
+								<a class="text-decoration-none" href="http://49.50.164.132:8080/productlist?categorynum=21"  >${cdto.category_name}</a>
 							</li>
                         	</c:if>
                         	</c:forEach>
