@@ -41,7 +41,7 @@ public class AdminController {
 		mv.setViewName("admin/insertform");
 		return mv;
 	}
-	@RequestMapping(value="/admin/admininsert", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/insertresult", method=RequestMethod.POST)
 	public ModelAndView insertresult(@ModelAttribute AdminDTO adto, @RequestParam(defaultValue = "category_num") String categorynum) throws IOException {
 		MultipartFile mf1 = adto.getProd_img();
 		MultipartFile mf2 = adto.getProd_description();
