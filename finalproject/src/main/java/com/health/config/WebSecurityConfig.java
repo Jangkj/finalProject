@@ -38,8 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
 			.antMatchers("/**", "/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
 			.antMatchers("/user/admin/**", "/admin/**").access("hasAuthority('ADMIN')")			
-			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정	
-			
+			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정				
 						
 			.anyRequest().permitAll()//authenticated()
 			.and()

@@ -48,5 +48,10 @@
 		update member_table set m_mail=#{m_mail}, m_pw=#{m_pw}, m_hp=#{m_hp}, m_post=#{m_post}, m_add1=#{m_add1}, m_add2=#{m_add2}
 		where m_mail=#{m_mail}
 	</update>
+	<select id="queryUser" resultType="MemberDTO" parameterType="int">
+      <![CDATA[
+         select * from user where m_num = #{m_num}
+      ]]>
+	</select>
 	
 </mapper>

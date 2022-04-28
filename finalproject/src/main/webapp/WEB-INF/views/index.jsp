@@ -120,17 +120,17 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="/productlist"><img src="<%=request.getContextPath() %>/resources/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
+                <a href="/productlist"><img src="<%=request.getContextPath() %>/resources/img/protein1.jpg" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">Protein</h5>
                 <p class="text-center"><a href="/productlist" class="btn btn-success">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="/productlist"><img src="<%=request.getContextPath() %>/resources/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Yoga</h2>
+                <a href="/productlist"><img src="<%=request.getContextPath() %>/resources/img/yoga1.jpg" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Yoga&Pilates</h2>
                 <p class="text-center"><a href="/productlist" class="btn btn-success">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="/productlist"><img src="<%=request.getContextPath() %>/resources/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
+                <a href="/productlist"><img src="<%=request.getContextPath() %>/resources/img/ex1.jpg" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
                 <p class="text-center"><a href="/productlist" class="btn btn-success">Go Shop</a></p>
             </div>

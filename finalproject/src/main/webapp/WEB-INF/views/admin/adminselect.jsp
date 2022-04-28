@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>상품 조회</title>
+	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 </head>
@@ -220,12 +220,12 @@
 	  var selectval = $("#selectbox option:selected").val();
 	  if(contentnum == 9){
 // 	    location.href="${pageContext.request.contextPath}/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-		  location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+		  location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
 	  }else if(contentnum == 18){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
 	
 	  }else if(contentnum == 27){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
 	
 	  }
 	}
@@ -237,7 +237,7 @@
 			var selectval = $("#selectbox option:selected").val(); // select element에서 선택된 option의 value가 저장된다.
 			for(var i = 0; i < 22; i++){
 				if(selectval == i){
-					location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+					location.href="http://49.50.164.132:8080/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
 				}
 			}
 		}

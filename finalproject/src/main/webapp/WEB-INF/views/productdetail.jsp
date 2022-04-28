@@ -5,15 +5,26 @@
 <html>
 
 <head>
-<title>MultiHealth</title>
+    <title>MultiHealth</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
+
+    <!-- Slick -->
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/slick.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/slick-theme.css">
+
 </head>
-<%@include file ="../views/include/headercustomx.jsp" %> <!-- 공통헤더 삽입 -->
+
 <body>
-
-
+<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -56,7 +67,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2"style="padding-bottom: 50px;">${product.prod_title }</h1>
-                            <p class="h3 py-2"> 가격 : ${product.prod_price }</p>
+                            <p class="h3 py-2"> 가격 : ${product.prod_price } ￦</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                 </li>
@@ -86,12 +97,12 @@
                                                 수량
                                                <input class="form-control text-center me-3" id="inputQuantity"
 							type="number" name="order_count" value="1" min="1"
-							style="max-width: 4rem" />
+							style="max-width: 4rem;margin-top: 5px;" />
                                         </ul>
                                     </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button id="check_module" type="button" class="btn btn-dark btn-lg" value="buy"style="display:none;" >Buy</button>
+                                        <button id="check_module" type="button" class="btn btn-dark btn-lg" value="buy" >Buy</button>
                                     </div>
                                     
                                     <div class="col d-grid">
@@ -110,7 +121,7 @@
     </section>
     <!-- Close Content -->
 		<div class="row about_product" style="text-align: center;" width="1000px">
-			<h1 class="page-header" style="padding-top: 100px; padding-bottom: 50px;">상품 상세</h1>
+			<h1 class="page-header" style="padding-top: 100px;padding-bottom: 50px;">상품 상세</h1>
 		</div>
     <div id="wrap">
   <div class="center">
@@ -122,10 +133,16 @@
     <section class="py-5"style="display:none">
     </section>
 
-
-
 <%@include file ="../views/include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
+ 
 
+    <!-- <!-- Start Script -->
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/templatemo.js"></script>
+    <%-- <script src="<%=request.getContextPath() %>/resources/js/custom.js"></script> --%>
+    <!-- End Script -->
 
     <!-- Start Slider Script -->
     <script src="<%=request.getContextPath() %>/resources/js/slick.min.js"></script>
@@ -170,22 +187,17 @@
 
 <script>
 $('#insertCart').click(function() {
-	alert($('#inputQuantity').val());
-    alert($('#prod_num').val());
+	//alert($('#inputQuantity').val());
+    //alert($('#prod_num').val());
 
     let prod_num = $('#prod_num').val();
     let inputQuantity = $('#inputQuantity').val();
- /*    const randomNum = Math.random() * 100;
-    const randomNumFloor = Math.floor(randomNum + 100);
-
-    let cart_num = randomNumFloor; 
-    alert(cart_num);  */
     
     console.log("상품번호",prod_num);
     console.log("수량",inputQuantity);
     $.ajax({
        type: "post",
-       data: {prod_num : prod_num, product_count : inputQuantity},/* cart_num : cart_num */
+       data: {prod_num : prod_num, product_count : inputQuantity},
        url: "http://localhost:8081/cart/insertcart",
        success: function(data){
           alert(data);
@@ -197,11 +209,10 @@ $('#insertCart').click(function() {
 		let inputQuantity = $("#inputQuantity").val();
 		let price =Number(inputQuantity*${product.prod_price})
 		var IMP = window.IMP; // 생략가능
-		IMP.init('imp06765182');
+		IMP.init('imp26042582');
 		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
 		IMP.request_pay({
-			pg : 'inicis', // version 1.1.0부터 지원.
+			pg : 'inicis', 
 			/*
 			 'kakao':카카오페이,
 			 html5_inicis':이니시스(웹표준결제)
@@ -234,17 +245,14 @@ $('#insertCart').click(function() {
 			//결제창에서 보여질 이름
 			amount : price,
 			//가격
-			buyer_email : `${user.m_mail}`,
+			buyer_email : `${user.username}`,
 			buyer_name : `${user.m_name}`,
 			buyer_tel : `${user.m_hp}`,
 			buyer_addr : `${user.m_add1}`,
-			m_redirect_url : 'http://www.localhost8080/payments/complete'
+			buyer_postcode : `${user.m_add2}`,
+			m_redirect_url : 'http://www.localhost8081/payments/complete'
 			// 결제창에서 보여질 유저이름 
-		/*
-		 모바일 결제시,
-		 결제가 끝나고 랜딩되는 URL을 지정
-		 (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-		 */
+		
 		}, function(rsp) {
 			console.log(rsp);
 			if (rsp.success) {
@@ -263,8 +271,32 @@ $('#insertCart').click(function() {
 		});
 	});
 </script>
+<script>
+   $(document).ready(function() {
+      $('li.active').removeClass('active');
+      $('a[href="' + "/product" + '"]').closest('li').addClass('active');
+   });
+</script>
 
 
+
+<!--  맨위로 버튼 -->
+<style>
+.btn_gotop {
+	display:none;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	z-index:999;
+	border:1px solid #ccc;
+	outline:none;
+	background-color:black;
+	color:#333;
+	cursor:pointer;
+	padding:15px 20px;
+	border-radius:100%;
+}
+</style>
 
 
 <script>

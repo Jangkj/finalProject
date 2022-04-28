@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +21,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.health.dto.CartDTO;
+import com.health.dto.ExercisetypeDTO;
 import com.health.dto.MemberDTO;
 import com.health.dto.ProductDTO;
 import com.health.service.CartService;
+import com.health.service.ExercisetypeService;
 import com.health.service.MemberService;
 import com.health.service.ProductService;
 		
@@ -42,6 +45,7 @@ public class CartController {
 	@Autowired
 	MemberService memberService;
 	
+		
 	@GetMapping("/payment")    // 유저 정보 가져오기
 	public String pay(Model model) {
 		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -92,7 +96,8 @@ public class CartController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}		
+		
 		return "cart";
 	}
 	

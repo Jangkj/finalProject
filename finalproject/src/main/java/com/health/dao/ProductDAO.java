@@ -24,11 +24,7 @@ import com.health.dto.ProductDTO;
 		
 		
 
-		public static int selectPrice(int prod_num) throws Exception {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
+		public int selectPrice(int prod_num) throws Exception;
 		public ProductDTO product(int prod_num)throws Exception;
 		
 		

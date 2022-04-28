@@ -15,22 +15,21 @@
 							<h2 class="h2 text-light border-bottom pb-3 border-light logo">MultiHealth</h2>
 							<ul class="list-unstyled text-light footer-link-list">
 								<li><i class="fas fa-map-marker-alt fa-fw text-light"></i>
-									회사주소</li>
+									서울특별시 강남구 대치동 889-41</li>
 								<li><i class="fa fa-phone fa-fw text-light"></i> <a
-									class="text-light" href="tel:010-020-0340">010-1234-5678</a></li>
+									class="text-light" href="tel:1544-9001">1544-9001</a></li>
 								<li><i class="fa fa-envelope fa-fw text-light"></i> <a
-									class="text-light" href="mailto:info@company.com">담당자 이메일주소</a>
+									class="text-light" href="mailto:erioll0@naver.com">erioll0@naver.com</a>
 								</li>
 							</ul>
 						</div>
 
 						<div class="col-md-4 pt-5">
-							<h2 class="h2 text-light border-bottom pb-3 border-light">상품페이지경로</h2>
+							<h2 class="h2 text-light border-bottom pb-3 border-light">PRODUCT</h2>
 							<ul class="list-unstyled text-light footer-link-list">
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								
+								<li><a class="text-light" href="/productlist?categorynum=1">Protein</a></li>
+								<li><a class="text-light" href="/productlist?categorynum=4">Yoga&Pilates</a></li>
+								<li><a class="text-light" href="/productlist?categorynum=12">Fitness Equiment</a></li>								
 							</ul>
 						</div>
 
@@ -90,7 +89,7 @@
 							<div class="col-12">
 								<p class="text-left text-light">
 									Copyright &copy; 2021 Company Name | Designed by <a
-										rel="sponsored" href="https://templatemo.com" target="_blank">수정가능</a>
+										rel="sponsored" target="_blank">MultiHealth</a>
 								</p>
 							</div>
 						</div>

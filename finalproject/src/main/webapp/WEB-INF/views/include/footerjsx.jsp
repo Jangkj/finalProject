@@ -22,15 +22,11 @@
 						</div>
 
 						<div class="col-md-4 pt-5">
-							<h2 class="h2 text-light border-bottom pb-3 border-light">상품페이지경로</h2>
+							<h2 class="h2 text-light border-bottom pb-3 border-light">PRODUCT</h2>
 							<ul class="list-unstyled text-light footer-link-list">
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
+								<li><a class="text-light" href="/productlist?categorynum=1">Protein</a></li>
+								<li><a class="text-light" href="/productlist?categorynum=4">Yoga&Pilates</a></li>
+								<li><a class="text-light" href="/productlist?categorynum=12">Fitness Equiment</a></li>								
 							</ul>
 						</div>
 
@@ -39,13 +35,14 @@
 							<ul class="list-unstyled text-light footer-link-list">
 								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">PT</a></li></sec:authorize>
 								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">PT</a></li></sec:authorize>
-								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">메뉴1</a></li></sec:authorize>
-								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">메뉴1</a></li></sec:authorize>
-								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">메뉴2</a></li></sec:authorize>
-								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">메뉴2</a></li></sec:authorize>
+								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">Make Routine</a></li></sec:authorize>
+								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">Make Routine</a></li></sec:authorize>
+								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">Routine List</a></li></sec:authorize>
+								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">Routine List</a></li></sec:authorize>
+								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">Special PT</a></li></sec:authorize>
+								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">Special PT</a></li></sec:authorize>
 							</ul>
 						</div>
-
 					</div>
 
 					<div class="row text-light mb-4">

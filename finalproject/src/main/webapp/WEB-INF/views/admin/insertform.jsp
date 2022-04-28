@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 등록</title>
+<title>MultiHealth</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -46,14 +46,7 @@
 									조회 및 수정 삭제</a></li>
 							
 						</ul></li>
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						href="#"> 주문 <i
-							class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a>
-						<ul id="collapseTwo" class="collapse list-unstyled pl-3">
-							<li><a class="text-decoration-none" href="#">주문 조회</a></li>
-						</ul></li>
+					
 				</ul>
 			</div>
 			

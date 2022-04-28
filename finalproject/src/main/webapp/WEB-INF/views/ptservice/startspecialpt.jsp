@@ -6,68 +6,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Take Your Position!</title>
+<title>MultiHealth</title>
 <head>
-    
+    <title>MultiHealth</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<%@include file ="../include/header.jsp" %> 
+ <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
 	<div class="container py-5">
-         <div class="row">
+        <div class="row">
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Start PT</h1>
-                	<ul class="list-unstyled templatemo-accordion">
-                    	<li class="pb-3 start_pt">
-	                        <p class="collapsed d-flex justify-content-between h3 text-decoration-none" >
-	                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-									스쿼트
-							</p>
-							<p class="startpt_count"> 
-								${ptcount}회
-							</p>
-                    	 </li>						
-                	</ul>
-                </div>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none">
+                            스쿼트
+                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                       <p class="startpt_count"> ${ptcount}회</p>
+                    </li>
+                    <li class="pb-3">
+                          <a class="btn btn-dark btn-lg px-3 text-light" onclick="location.href='ptmain';">취소하기</a>
+                    </li>
+                </ul>
             </div>
-			<div class="col-lg-12 col-md-200">			
-                <div class="row">
-                <div class="col-md-12">
-                		<div class="center">
-							<div ><canvas id="canvas"></canvas></div>	
-				        </div>
-			        </div>
-			        <div class="row">
-                	<div class="col-md-6" >
-                		<div class="frame">
-					            <div class="center">
-					                <div class="headline">
-					                    <div class="small">Squat</div>Counter
-					                </div>
-					                <div class="circle-big">
-					                    <div class="text">
-					        				<span>남은갯수</span><br>
-					                        <span id="counter">${ptcount}</span>
-					                    </div>
-					                    <svg>
-					                        <circle class="bg" cx="57" cy="57" r="52" />
-					                        <circle class="progress" cx="57" cy="57" r="52" />
-					                    </svg>
-					                </div>
-					            </div>
-					        </div>
-					        <div class="col-md-12">
-			                	<a class="btn btn-dark btn-lg px-3 text-light" onclick="location.href='ptmain';">메인으로</a>
-                			</div>
-                			<div class="col-md-12" style="padding-bottom:300px;">
-                			</div>
-                		</div>
-                	</div>
-                 </div>        
-            </div>
+            <div class="col-md-7">
+                  <canvas id="canvas"></canvas>
+             </div>
+              <div class="col-md-2">
+					<div class="headline">
+						 <div class="small">Squat</div>Counter
+					</div>
+					<div class="circle-big">
+					  	<svg>
+					    	<circle class="bg" cx="57" cy="57" r="52" />
+					     	<circle class="progress" cx="57" cy="57" r="52" />
+					  	</svg>
+					  	<div class="text">
+					    	<span>남은갯수</span><br>
+					    	<span id="counter">${ptcount}</span><div class="small"></div>
+					   	</div>
+					</div>    
+			</div>
         </div>
-        <div style="visibility:hidden; position:absolute;"id="label-container"></div>
+    </div>
+<div style="visibility:hidden; position:absolute;"id="label-container"></div>
 <%@include file ="../include/footerjsx.jsp" %> 
 <!-- Optional JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -89,7 +73,7 @@
             maxPredictions = model.getTotalClasses();
 
             // Convenience function to setup a webcam
-            const size = 500;
+            const size = 700;
             const flip = true; // whether to flip the webcam
             webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
             await webcam.setup(); // request access to the webcam

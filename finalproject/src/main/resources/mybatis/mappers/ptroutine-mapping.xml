@@ -12,6 +12,10 @@
 select * from exercisetype_table order by rand() limit 3;
 </select>
 
+<select id="exercisetypesubpage" resultType="exercisetypedto">
+select * from exercisetype_table order by rand() limit 12;
+</select>
+
 <select id="exercisetyperesssearch" resultType="exercisetypedto" >
 select * from exercisetype_table where et_ename in 
 <foreach collection="array" item="add" open="("  close=")"  separator=",">

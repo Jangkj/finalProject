@@ -2,13 +2,13 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.health.dao.CartDAO" >
 	
-	<select id="cartQueryById" resultType="cartdto"
+	<select id="cartQueryById" resultType="CartDTO"
 		parameterType="int"> 
 	<![CDATA[ 
-		SELECT prod_num, cart_num FROM cart_table where m_num=#{m_num}
+		SELECT prod_num, product_count FROM cart_table where m_num=#{m_num}
 	]]>
 	</select>
-	<select id="prodQueryByProdNum" resultType="productDTO"
+	<select id="prodQueryByProdNum" resultType="ProductDTO"
 		parameterType="int"> 
 	<![CDATA[ 
 		SELECT * FROM product_table where prod_num=#{prod_num}

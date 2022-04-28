@@ -67,13 +67,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-white mr-2"></i> 상품검색
-                    </a> -->
-                    <a class="nav-icon position-relative text-decoration-none" href="/cart">
+	
+                    <sec:authorize access="isAnonymous()"><a class="nav-icon position-relative text-decoration-none" href="/user/loginPage">
                         <i class="fa fa-fw fa-cart-arrow-down text-white mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
-                    </a>
+                    </a></sec:authorize>
+                    <sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><a class="nav-icon position-relative text-decoration-none" href="/cart">
+                        <i class="fa fa-fw fa-cart-arrow-down text-white mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a></sec:authorize>
                     <sec:authorize access="isAnonymous()"><a class="nav-icon position-relative text-decoration-none" href="/agreement">
                         <i class="fa fa-fw fa-user text-white mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>

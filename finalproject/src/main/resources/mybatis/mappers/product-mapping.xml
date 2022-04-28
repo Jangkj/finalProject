@@ -6,24 +6,30 @@
 
 <select id="selectProductCount" resultType="int">
  		<![CDATA[
- 			select count(*) from(select prod_num, prod_title, prod_price, prod_inventory, prod_img_name  from
+ 			select count(*) from(select prod_num, prod_title, prod_price from
  		product_table )prod where prod_title like'%${search_text}%' or prod_price like'%${search_text}%' 
  		]]>
 	</select>
 	
-<select id="selectProductlist" resultType="productDTO">
-      <![CDATA[
-         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+	<select id="selectList" resultType="productDTO">
+	<![CDATA[
+		select * from (select @rownum:=@rownum+1 rnum, tot.* 
 		from(select * from product_table where prod_title like'%${search_text}%' or prod_price like'%${search_text}%' 
  		order by prod_num asc) tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
- 		]]>
+        ]]>
 	</select>
 	
 	<select id="product" resultType="productDTO" parameterType="int">
  		<![CDATA[
  			select * from product_table where prod_num = #{num}
  		]]>
+	</select>
+	
+	<select id="selectPrice"  resultType="int" parameterType="int" > 
+		<![CDATA[
+			select prod_price from product_table where prod_num = #{prod_num}
+		]]>	
 	</select>
 	
 	<select id="productDetail" resultType="ProductDTO"
@@ -41,7 +47,6 @@
 	<select id="testlist2" resultType="admindto">
 		select * from product_table where category_num=#{categorynum} limit #{pagenum}, #{contentnum}
 	</select>
-	
 	
 	<select id="testcount" resultType="int">
 		select count(*) from product_table

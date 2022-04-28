@@ -105,7 +105,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public int selectPrice(int prod_num) throws Exception {
-		return ProductDAO.selectPrice(prod_num);
+		return dao.selectPrice(prod_num);
 	}
 
 

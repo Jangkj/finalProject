@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>MultiHealth</title>
+<script src="<%=request.getContextPath() %>/resources/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
 
 
 </head>
@@ -94,6 +96,11 @@
                         </a>
                         <ul class="collapse show list-unstyled pl-3">
                         <c:forEach items="${categorylist }" var="cdto" varStatus="status">
+                        <c:if test="${cdto.category_num == 6}">
+                        		<li id=list name=list value="${cdto.category_name}">
+								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=7"  >${cdto.category_name}</a>
+							</li>
+                        	</c:if>
                         	<c:if test="${cdto.category_num == 7}">
                         		<li id=list name=list value="${cdto.category_name}">
 								<a class="text-decoration-none" href="http://localhost:8081/productlist?categorynum=7"  >${cdto.category_name}</a>
@@ -205,11 +212,11 @@
 	                            <div class="card rounded-0">
 	                                ${dto.prod_img_name }
 	                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-	                                    <ul class="list-unstyled">
-	                                        
+	                                    <ul class="list-unstyled">	                                        
+	                                        <li><a class="btn btn-success text-white mt-2" href="/productdetail?prod_num=${dto.prod_num }"><i class="fas fa-cart-plus"></i></a></li>
 	                                    </ul>
 	                                </div>
-	                            </div>
+	                            </div>	                            
 	                            <div class="card-body" style="display:inline-block; height:166px" >
 	                                <a href="/productdetail?prod_num=${dto.prod_num }" class="h3 text-decoration-none">${dto.prod_title }</a><br><br>
 	                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
@@ -265,9 +272,8 @@
 		<div class="container my-4">
 			<div class="row text-center py-3">
 				<div class="col-lg-6 m-auto">
-					<h1 class="h1">Our Brands</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod Lorem ipsum dolor sit amet.</p>
+					<h1 class="h1">PT Routine</h1>
+					<p>건강한 운동습관은 즐거운 하루를 보낼수 있도록 도와줍니다.<br> 운동을 시작하고 루틴을 지키는 것 에 어려움을 느낀다면<br> 운동루틴 서비스를 통해 건강을 지켜가세요.</p>
 				</div>
 				<div class="col-lg-9 m-auto tempaltemo-carousel">
 					<div class="row d-flex flex-row">
@@ -292,19 +298,19 @@
 										<div class="row">
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_01.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[0].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_02.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[1].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_03.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[2].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_04.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[3].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 										</div>
 									</div>
@@ -315,19 +321,19 @@
 										<div class="row">
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_01.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[4].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_02.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[5].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_03.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[6].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_04.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[7].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 										</div>
 									</div>
@@ -338,19 +344,19 @@
 										<div class="row">
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_01.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[8].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_02.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[9].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_03.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[10].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 											<div class="col-3 p-md-5">
 												<a href="#"><img class="img-fluid brand-img"
-													src="<%=request.getContextPath() %>/resources/img/brand_04.png" alt="Brand Logo"></a>
+													src="<%=request.getContextPath() %>/resources/images/${exerciselist[11].et_img2}.jpg" alt="Brand Logo"></a>
 											</div>
 										</div>
 									</div>
@@ -379,9 +385,7 @@
 
 <%@include file ="../views/include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
 
-	
-	<!-- Start Script -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>	
+
 	<script type="text/javascript">
 	
 	/*한페이지당 게시물 */
@@ -405,7 +409,6 @@
 		function f(idx){
 			var pagenum = idx;
 			var contentnum = $("#contentnum option:selected").val();
-			//console.dir($("#contentnum option:selected"))
 			var selectval = $("#list option:selected").val(); // select element에서 선택된 option의 value가 저장된다. ??? 수정
 			
 			for(var i = 1; i < 21; i++){
