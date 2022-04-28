@@ -44,6 +44,7 @@ function infoupdate (){
         success: function(data) {
 			if (data == true) {
 				alert("정보 변경 완료");
+				history.back();
 			} else {
 				alert("정보 변경 실패");
 			}
@@ -53,6 +54,7 @@ function infoupdate (){
 		}
         
     }); //ajax통신으로 데이터를 json으로 변경 후 insert
+    
 
 }
 </script>
@@ -95,7 +97,7 @@ function infoupdate (){
     
 
     <!-- Start Sign Up -->
-    <div class="container py-5 text-light">
+    <div class="container py-5 text-dark">
     <sec:authorize access="isAuthenticated()">
 		<sec:authentication property="principal" var="user" />
 	</sec:authorize>
@@ -104,7 +106,7 @@ function infoupdate (){
                 <div class="row">
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
                     <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"/>
-                        <label for="inputemail">이메일</label>
+                        <label for="inputemail" >이메일</label>
                         <input type="email" class="form-control mt-1" id="email" name="m_mail" value="${user.username }" readonly="readonly">
                         <span id="email_result"></span>
                     </div>

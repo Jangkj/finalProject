@@ -78,7 +78,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDTO queryUser(int m_num) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -104,7 +103,26 @@ public class MemberServiceImpl implements MemberService {
 			principal.setPassword(principal.getPassword()); // 비밀번호가 유지 될때
 			param.put("m_pw", principal.getPassword());
 		}
-
+		
+		String m_hp = param.get("m_hp").toString();
+		if(m_hp != null) {
+			principal.setM_hp(param.get("m_hp").toString());
+			}
+		
+		String m_post = param.get("m_post").toString();
+		if(m_post != null) {
+			principal.setM_post(Integer.parseInt(param.get("m_post").toString()));
+			}
+		
+		String m_add1 = param.get("m_add1").toString();
+		if(m_add1 != null) {
+			principal.setM_add1(param.get("m_add1").toString());
+			}
+		
+		String m_add2 = param.get("m_add2").toString();
+		if(m_add2 != null) {
+			principal.setM_add2(param.get("m_add2").toString());
+			}
 		memberdao.updateMember(param);
 		return true;
 	}

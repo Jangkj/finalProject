@@ -48,7 +48,7 @@ public class AdminController {
 		
 		//String savePath = "c:/upload/";
 		//String loadPath = "http://localhost:8081/upload/";
-		String savePath = "/usr/mydir/upload";
+		String savePath = "/usr/mydir/upload/";
 		String loadPath = "http://49.50.164.132:8080/upload/";
 		
 		
@@ -111,7 +111,7 @@ public class AdminController {
 		MultipartFile mf2 = adto.getProd_description();
 		//String savePath = "c:/upload/";
 		//String loadPath = "http://localhost:8081/upload/";
-		String savePath = "/usr/mydir/upload";
+		String savePath = "/usr/mydir/upload/";
 		String loadPath = "http://49.50.164.132:8080/upload/";
 
 		if(!mf1.isEmpty()) {

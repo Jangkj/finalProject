@@ -88,8 +88,9 @@ self.location ="/user/update";
     
 
     <!-- Start Sign Up -->
+    <!-- Start Sign Up -->
     <section>
-    <div class="container py-5 text-light">
+    <div class="container py-5 text-dark">
         <div class="row py-5">
             <form class="col-md-9 m-auto" method="post" role="form" action="/user/signup" method="post" id="formsubmit">
                 <div class="row">
@@ -122,39 +123,42 @@ self.location ="/user/update";
                     <div class="row">
                         <div class="col-sm-12" style="padding-bottom: 30px;">
                         <input type="text" id="postcode" placeholder="우편번호"  name="m_post" value="${user.m_post }" class="form-control" readonly="readonly">
-                        </di7v>                        
+                        </div>                        
                     </div>
-                </div>   
-                
-                <div class="row"><!--  -->
-                    <div class="form-group col-md-6 mb-3">
-                     <div class="col-sm-3 control-label">
-                     <label id="address1">주소</label>
-                    </div>
-                    <div class="col-sm-12">
-                        <input type="text" id="address" name="m_add1" value="${user.m_add1 }" class="form-control" readonly="readonly">                        
-                    </div>   
-                   </div>              
-                   <div class="form-group col-md-6 mb-3">
-                    <div class="col-sm-3 control-label">
-                        <label id="address1">상세주소</label>
-                    </div>
-                    <div class="col-sm-12"> 
-                        <input type="text" id="address2" placeholder="상세주소" name="m_add2" value="${user.m_add2 }" class="form-control" maxlength="50" readonly="readonly">
-                    </div>
-                  </div>
                 </div>
 
-				<div class="row">
-                    <div class="col text-end mt-2">
-					<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><button type="button" id="list" onclick="location.href='/'" class="btn btn-primary btn-lg px-3">목록으로</button></sec:authorize>
-					<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><button type="button" id="update" onclick="location.href='/user/info/infoupdate'"class="btn btn-primary btn-lg px-3">수정</button></sec:authorize>
-					</div>
-				</div>
-			</form>
-        </div>
-    </div>
-    </section>    
+							
+								<div class="form-group col-md-12 mb-3">
+									<div class="col-sm-4 control-label">
+										<label id="address1">주소</label>
+									</div>
+									<div class="col-sm-12">
+										<input type="text" id="address" name="m_add1" value="${user.m_add1 }" class="form-control" readonly="readonly">
+									</div>
+								</div>
+							
+							
+								<div class="form-group col-md-12 mb-3">
+									<div class="col-sm-4 control-label">
+										<label id="address2">상세주소</label>
+									</div>
+									<div class="col-sm-12">
+										<input type="text" id="address2" placeholder="상세주소" name="m_add2" value="${user.m_add2 }" class="form-control" maxlength="50" readonly="readonly">
+									</div>
+								</div>
+							
+
+							<div class="row">
+			                    <div class="col text-end mt-2">
+									<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><button type="button" id="list" onclick="location.href='/'" class="btn btn-dark btn-lg px-3">목록으로</button></sec:authorize>
+									<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><button type="button" id="update" onclick="location.href='/user/info/infoupdate'"class="btn btn-dark btn-lg px-3">수정</button></sec:authorize>
+								</div>
+							</div>
+						</form>
+        
+    
+    			</section>    
+    <!-- End Sign Up --> 
     <!-- End Sign Up -->
 
 <%@include file ="../views/include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Welcome</title>
 <head>
-    <title>멀티헬스에 오신 것을 환영합니다.</title>
+    <title>MultiHealth</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

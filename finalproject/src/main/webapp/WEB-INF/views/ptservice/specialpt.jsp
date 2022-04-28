@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Special PT</title>
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -52,7 +52,7 @@
                     <div class="col-md-4">
                         <ul class="list-inline pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3 main_hover">Specia PT</a>
+                                <a class="h3 text-dark text-decoration-none mr-3 main_hover">Special PT</a>
                             </li>
                         </ul>
                     </div>
