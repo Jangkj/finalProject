@@ -98,21 +98,18 @@ function email_Check() {
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="inputname">이름</label>
-                        <input type="name" class="form-control mt-1" id="name" name="m_name" placeholder="이름" maxlength="20">
-                        <span></span>
+                        <input type="name" class="form-control mt-1" id="name" name="m_name" placeholder="이름" maxlength="20">                        
                         <span text="${valid_m_name}"></span>
                     </div>
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
                         <label for="inputpassword">비밀번호</label>
                         <input type="password" class="form-control mt-1" id="password" name="m_pw" placeholder="8자 이상 20자 이내" maxlength="20">                        
-                        <span style="font-size: 12px; color: red;">* </span><!--  -->
-                        <span></span>
+                        
                         <span text="${valid_m_pw}"></span>
                     </div>                    
                     <div class="form-group col-md-6 mb-3">
                         <label for="inputpasswordcon">비밀번호 확인</label>
-                        <input type="password" class="form-control mt-1" id="password_con" placeholder="비밀번호 확인">
-                        
+                        <input type="password" class="form-control mt-1" id="password_con" placeholder="비밀번호 확인">                        
                     </div>
                     
                 </div>
@@ -125,9 +122,7 @@ function email_Check() {
 
                 <div class="mb-3" style="padding-bottom: 30px;">
                     <label for="inputtext">전화 번호</label>
-                    <input type="text" class="form-control mt-1" id="phone" name="m_hp" placeholder="ex:01012345678" maxlength="11">
-                    <span></span>
-                    <span text="${valid_m_hp}"></span>
+                    <input type="text" class="form-control mt-1" id="phone" name="m_hp" placeholder="ex:01012345678" maxlength="11">                    
                 </div>               
                 
                  
@@ -138,9 +133,7 @@ function email_Check() {
                     </div>                    
                     <div class="row">
                         <div class="col-sm-4" style="padding-bottom: 30px;">
-                        <input type="text" id="postcode" placeholder="우편번호"  name="m_post" class="form-control">
-                        <span></span>
-                        <span text="${valid_m_post}"></span>
+                        <input type="text" id="postcode" placeholder="우편번호"  name="m_post" class="form-control">                        
                         </div>
                         <div class="col-sm-3">
                         <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary">                  
@@ -154,8 +147,7 @@ function email_Check() {
                      <label id="address1">주소</label>
                     </div>
                     <div class="col-sm-12">
-                        <input type="text" id="address" name="m_add1" class="form-control">
-                        <span></span>
+                        <input type="text" id="address" name="m_add1" class="form-control">                        
                     </div>   
                    </div>
               

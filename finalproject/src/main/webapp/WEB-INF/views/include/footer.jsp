@@ -4,31 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-    <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/resources/img/favicon.ico">
 
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
-
-    <!-- Load map styles -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-
-    <!-- Start Script -->
-    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resources/js/templatemo.js"></script>    
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	
-
-
-    <!-- End Script -->
 
 	<!-- Start Footer -->
 			<footer class="bg-dark" id="tempaltemo_footer">
@@ -54,27 +30,23 @@
 								<li><a class="text-light" href="#">---</a></li>
 								<li><a class="text-light" href="#">---</a></li>
 								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
+								
 							</ul>
 						</div>
 
 						<div class="col-md-4 pt-5">
 							<h2 class="h2 text-light border-bottom pb-3 border-light">PT</h2>
 							<ul class="list-unstyled text-light footer-link-list">
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
-								<li><a class="text-light" href="#">---</a></li>
+								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">PT</a></li></sec:authorize>
+								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">PT</a></li></sec:authorize>
+								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">메뉴1</a></li></sec:authorize>
+								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">메뉴1</a></li></sec:authorize>
+								<sec:authorize access="isAnonymous()"><li><a class="text-light" href="/user/loginPage">메뉴2</a></li></sec:authorize>
+								<sec:authorize access="isAuthenticated()"><li><a class="text-light" href="/ptservice/ptmain">메뉴2</a></li></sec:authorize>								
 							</ul>
 						</div>
-
 					</div>
-
+					
 					<div class="row text-light mb-4">
 						<div class="col-12 mb-3">
 							<div class="w-100 my-3 border-top border-light"></div>
@@ -106,16 +78,7 @@
 										class="fab fa-linkedin fa-lg fa-fw text-light"></i></a>
 								</li>
 							</ul>
-						</div>
-						<div class="col-auto">
-							<label class="sr-only" for="subscribeEmail">이메일 주소 검색창</label>
-							<div class="input-group mb-2">
-								<input type="text" class="form-control bg-white border-light"
-									id="subscribeEmail" placeholder="Email address">
-								<div class="input-group-text btn-primary text-light">Subscribe
-								</div>
-							</div>
-						</div>
+						</div>						
 					</div>
 				</div>
 
@@ -134,5 +97,15 @@
 
 			</footer>
 			<!-- End Footer -->
+			
+    <!-- Start Script -->
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>        
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+    <!-- End Script -->			
+			
 </body>
 </html>

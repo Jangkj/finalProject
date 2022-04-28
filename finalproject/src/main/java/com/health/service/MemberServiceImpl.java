@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.websocket.DecodeException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -50,9 +48,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void createUser(MemberDTO dto) {
 		String rawPassword = dto.getPassword();
-		System.out.println("============================");
-		System.out.println(rawPassword);
-		System.out.println("============================");
 		String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
 		dto.setPassword(encodedPassword);
 		memberdao.createUser(dto);
@@ -80,33 +75,38 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberdao.checkEmail(m_mail);
 		return result;
 	}
-	
+
+	@Override
+	public MemberDTO queryUser(int m_num) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public boolean updateUser(Map<String, Object> param) {
-		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
-		
-		if (!param.get("old_pw").equals("")) { //비밀번호 바뀔때
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (!param.get("old_pw").equals("")) { // 비밀번호 바뀔때
 			String oldPassword = param.get("old_pw").toString();
 			String rawPassword = param.get("m_pw").toString();
 			String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
-			
-			boolean chackpw = (boolean) passwordEncoder.matches(oldPassword, principal.getPassword());			
-		
+
+			boolean chackpw = (boolean) passwordEncoder.matches(oldPassword, principal.getPassword());
+
 			if (chackpw) {
 				principal.setPassword(encodedPassword);
 				param.put("m_pw", encodedPassword);
-			}else {
+			} else {
 				return false;
 			}
 
-		}else {
-			principal.setPassword(principal.getPassword());	//비밀번호가 유지 될때
+		} else {
+			principal.setPassword(principal.getPassword()); // 비밀번호가 유지 될때
 			param.put("m_pw", principal.getPassword());
 		}
-		
+
 		memberdao.updateMember(param);
 		return true;
-	}	
+	}
 
 }

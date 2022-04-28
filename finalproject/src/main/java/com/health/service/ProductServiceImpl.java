@@ -98,6 +98,15 @@ public class ProductServiceImpl implements ProductService {
 		return 0;
 	}
 
+	@Override
+	public List<ProductDTO> selectList(String search_text) throws Exception {
+		return null;
+	}
+
+	@Override
+	public int selectPrice(int prod_num) throws Exception {
+		return ProductDAO.selectPrice(prod_num);
+	}
 
 
 }

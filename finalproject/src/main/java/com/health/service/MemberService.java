@@ -18,4 +18,8 @@ public interface MemberService extends UserDetailsService {
      public MemberDTO getInfo(String m_mail);
      public int checkEmail(String m_mail);
      public boolean updateUser(Map<String, Object> param);
+	
+     //cart user 
+     MemberDTO queryUser(int m_num) throws Exception;
+     
 }

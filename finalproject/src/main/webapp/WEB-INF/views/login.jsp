@@ -44,7 +44,7 @@
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center text-dark">
-            <h1 class="h1">로그인</h1>
+            <h1 class="h1">Log In</h1>
            
         </div>
     </div>
@@ -55,8 +55,9 @@
 	    <div class="row">
 	      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 	        <div class="card card-signin my-5">
-	          <div class="card-body" style="height: 350px; padding: 55px 20px 0px 20px;">
+	          <div class="card-body" style="height: 450px; padding: 55px 20px 0px 20px;">
 	            <h5 class="card-title text-center">Log In</h5>
+	            <br>
 	            <c:url value="j_spring_security_check" var="loginUrl" />
 	            <form class="form-signin" method="post" action="${loginUrl }">
 					<c:if test="${param.error != null }">
@@ -71,12 +72,15 @@
 		            <div class="form-label-group" style="margin-bottom: 30px">
 		              <input type="password" id="pwd" name="password" class="form-control" placeholder="Password" required>
 		            </div>
-						
-					<button style="margin-left: 100px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log in</button>
-		            <!-- <hr class="my-4">
-		            Forgot your <a href="javascript:void(0)" onclick="findid()">ID</a> or 
-		            				<a href="javascript:void(0)" onclick="findpassword()">Password</a>?   비번찾기-->
-		            <button style="float: right; margin-right: 100px" class="btn btn-lg btn-secondary btn-block text-uppercase" onclick="location='/agreement'">Join</button>
+					<div>	
+					<button style="margin-left: 60px" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log In</button>		            
+		            <button style="float: right; margin-right: 60px" class="btn btn-lg btn-secondary btn-block text-uppercase" onclick="location='/agreement'">Sign Up</button>
+		            </div>
+		            <br>
+		            <div style="text-align:center;">  
+		            	<span class="text-success">PT 서비스는 본 사이트의</span><br>
+		            	<span class="text-success">회원님들에게 제공되고 있습니다.</span>
+					</div>					
 	            </form>
 	          </div>
 	        </div>

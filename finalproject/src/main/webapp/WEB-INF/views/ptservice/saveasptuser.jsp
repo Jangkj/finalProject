@@ -11,21 +11,10 @@
     <title>Zay Shop eCommerce HTML CSS Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="<%=request.getContextPath() %>/resources/image/x-icon" href="<%=request.getContextPath() %>/resources/img/favicon.ico">
-
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
 </head>
 <body>
-<%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
-<div class="container py-5">
+ <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
+	<div class="container py-5">
         <div class="row">
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Categories</h1>
@@ -43,8 +32,14 @@
                         </a>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="routinelist">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="ptroutinelist">
                             Routine List
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="specialpt">
+                            Special PT
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                     </li>
@@ -93,8 +88,7 @@
 
         </div>
     </div>
-<%@include file ="../include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
-    <!-- End Footer -->
+<%@include file ="../include/footerjsx.jsp" %> 
 <script src="<%=request.getContextPath() %>/resources/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
   function Submitcheck() {

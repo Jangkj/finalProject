@@ -32,13 +32,7 @@ public class AdminController {
 	@Qualifier("categoryservice")
 	CategoryService cservice;
 	
-	@RequestMapping("/main_admin")
-	public ModelAndView admin() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main_admin");
-		return mv;
-	}
-	
+		
 	@RequestMapping(value="/admin/admininsert", method=RequestMethod.GET)
 	public ModelAndView insertform() {
 		ModelAndView mv= new ModelAndView();
@@ -54,6 +48,10 @@ public class AdminController {
 		
 		String savePath = "c:/upload/";
 		String loadPath = "http://localhost:8081/upload/";
+		//String savePath = "/usr/mydir/upload";
+		//String loadPath = "http://49.50.164.132:8080/upload/"
+		
+		
 		if(!mf1.isEmpty()) {
 			String originname1 = mf1.getOriginalFilename();
 			String beforeext1 = originname1.substring(0, originname1.indexOf("."));
@@ -108,11 +106,14 @@ public class AdminController {
 		return mv;
 	}
 	@RequestMapping(value="/admin/adminmodify", method=RequestMethod.POST)
-	public ModelAndView adminmodify(@ModelAttribute AdminDTO adto, int productnum) throws Exception{
+	public ModelAndView adminmodify(@ModelAttribute AdminDTO adto, String prod_img_before, String prod_description_before, int productnum) throws Exception{
 		MultipartFile mf1 = adto.getProd_img();
 		MultipartFile mf2 = adto.getProd_description();
 		String savePath = "c:/upload/";
 		String loadPath = "http://localhost:8081/upload/";
+		//String savePath = "/usr/mydir/upload";
+		//String loadPath = "http://49.50.164.132:8080/upload/"
+
 		if(!mf1.isEmpty()) {
 			String originname1 = mf1.getOriginalFilename();
 			String beforeext1 = originname1.substring(0, originname1.indexOf("."));
@@ -122,6 +123,9 @@ public class AdminController {
 			mf1.transferTo(serverfile1);
 			adto.setProd_img_name("<p><img class='card-img rounded-0 img-fluid' src=" + loadPath + route1 + "></p>");
 		}
+		else {
+			adto.setProd_img_name(prod_img_before);
+		}
 		if(!mf2.isEmpty()) {
 			String originname2 = mf2.getOriginalFilename();
 			String beforeext2 = originname2.substring(0, originname2.indexOf("."));
@@ -130,6 +134,10 @@ public class AdminController {
 			File serverfile2 = new File(savePath + route2); 
 			mf2.transferTo(serverfile2);
 			adto.setProd_description_name("<p style='text-align: center;' align='center'><br><img src="+ loadPath + route2 +"><br></p>");
+			System.out.println(adto.getProd_description_name());
+		}
+		else {
+			adto.setProd_description_name(prod_description_before);
 		}
 
 		int result = service.updateProduct(adto);

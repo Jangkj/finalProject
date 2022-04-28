@@ -71,6 +71,8 @@ public class PtController {
 		//가입정보가 있다면 ptmain 페이지로 이동  
 		}else {
 			//ptuser의 정보를 담아서 전달 
+			String m_user =principal.getM_name();
+			mv.addObject("m_user", m_user);
 			PtuserDTO user = ptuserservice.ptuser(m_num);
 			mv.addObject("pt_user", user);
 			
@@ -158,7 +160,6 @@ public class PtController {
 		//로그인한 유저의 정보를 뽑아 kcal 계산을 위한 몸무게를 전달함
 		PtuserDTO user = ptuserservice.ptuser(m_num);
 		int user_kg = user.getPu_kg();
-		
 		mv.addObject("exercisetypelist", list);
 		mv.addObject("user_kg", user_kg);
 		mv.setViewName("ptservice/exercisetypelist");
@@ -292,7 +293,7 @@ public class PtController {
 		workout.setPu_num(pu_num);
 		workout.setWorkout_time(datetime);
 		workout.setPr_info(pr_info);
-		if(oneweek>=6 &&  point==0) {
+		if(oneweek>6 &&  point==0) {
 			workout.setWorkout_point(50);
 			workoutservice.insertworkout(workout);
 			ptuserservice.updatepoint(pu_num);
@@ -302,7 +303,26 @@ public class PtController {
 			workoutservice.insertworkout(workout);
 			return "{\"ms\":\"운동이 완료되었습니다\"}";
 		}
-	}	
+	}
+	
+	//================Specialpt 스쿼드 갯수 카운트=========================== 
+	//목표 횟수를 받아옴 
+	@RequestMapping(value="ptservice/specialpt", method = RequestMethod.GET)
+	public ModelAndView speciaptstart(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ptservice/specialpt");	
+		return mv;
+	}
+	
+	//횟수를 뿌려주고 티처블 머신과 연결함
+	@RequestMapping(value="ptservice/specialpt", method = RequestMethod.POST)
+	public ModelAndView specialroutinestart(String ptcount){
+		int count = Integer.parseInt(ptcount);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("ptcount", count);
+		mv.setViewName("ptservice/startspecialpt");	
+		return mv;
+	}
 	
 }
 

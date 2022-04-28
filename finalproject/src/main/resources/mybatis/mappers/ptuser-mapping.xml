@@ -5,7 +5,7 @@
 <mapper namespace="com.health.dao.PtuserDAO" >
 
 <insert  id="insertptuser" parameterType="ptuserdto">
-insert into ptuser_table(pu_cm,pu_kg,m_mail,pu_target)values(#{pu_cm},#{pu_kg},#{m_mail},#{pu_target})
+insert into ptuser_table(pu_cm,pu_kg,m_num,pu_target)values(#{pu_cm},#{pu_kg},#{m_num},#{pu_target})
 </insert> 
 
 <select id="ptuser" resultType="ptuserdto">

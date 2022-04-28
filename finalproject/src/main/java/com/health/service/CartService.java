@@ -11,7 +11,7 @@ public interface CartService {
 
 	ProductDTO prodQueryByProdNum(int prod_num)throws Exception;
 	
-	public void deleteCart(int prod_num, int m_num)throws Exception;
+	public void deleteCart(int prod_num, int m_num) throws Exception;
 
 	void updateCart(int prod_num, int product_count, int m_num) throws Exception;
 

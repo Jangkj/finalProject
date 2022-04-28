@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
@@ -17,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.health.dto.ExercisetypeDTO;
 import com.health.dto.MemberDTO;
+import com.health.service.ExercisetypeService;
 import com.health.service.MemberServiceImpl;
 import com.health.valid.Validator;
 
@@ -31,10 +35,18 @@ public class MemberController {
 	@Autowired
 	Validator valid;
 
+	@Autowired
+	@Qualifier("exercisetypeservice")
+	ExercisetypeService exercisetypeservice;
+
 	// 메인 페이지
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index() {
-		return "index";
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		List<ExercisetypeDTO> list = exercisetypeservice.exercisetypemain();
+		mv.addObject("exercisetypelist", list);
+		mv.setViewName("/index");
+		return mv;
 	}
 
 	// 회원가입 페이지
@@ -66,26 +78,22 @@ public class MemberController {
 
 	}
 
-	
 	// 로그인 페이지
-	@RequestMapping(value="/user/loginPage")
+	@RequestMapping(value = "/user/loginPage")
 	public String dispLogin() {
 		return "login";
 	}
-	
 
 	// 로그인 결과 페이지
 	@GetMapping("/user/login/result")
 	public String dispLoginResult() {
-
 		return "index"; // loginSuccess
 	}
-	
 
-	//로그아웃 결과 페이지
+	// 로그아웃 결과 페이지
 	@GetMapping("/user/logout/result")
 	public String dispLogout() {
-	return "index";
+		return "index";
 	}
 
 	// 접근 거부 페이지
@@ -101,11 +109,6 @@ public class MemberController {
 		return "myinfo";
 	}
 
-	// 어드민 페이지
-	@GetMapping("/user/admin")
-	public String dispAdmin() {
-		return "admin";
-	}
 
 	// 회원가입 비동기 이메일체크
 	@ResponseBody
@@ -134,6 +137,4 @@ public class MemberController {
 		return result;
 	}
 
-
-	
 }

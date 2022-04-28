@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
 			.antMatchers("/**", "/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
-			.antMatchers("/user/admin/**").access("hasAuthority('ADMIN')")			
+			.antMatchers("/user/admin/**", "/admin/**").access("hasAuthority('ADMIN')")			
 			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정	
 			
 						
@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureHandler(authenticationFailureHandler)
 			.usernameParameter("username")
             .passwordParameter("password")
-			.defaultSuccessUrl("/user/login/result")
+			.defaultSuccessUrl("/")
 			.permitAll() // 로그인 설정
 			.and()
 			

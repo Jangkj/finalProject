@@ -13,7 +13,7 @@ import com.health.dto.ProductDTO;
 		
 		// 서비스 페이지 처리 총 상품 갯수 카운트
 		
-		public int selectProductCount(String search_text) throws Exception;
+		public int selectList(String search_text) throws Exception;
 		
 		// 카운트 된 개수로 페이지 처리 
 		
@@ -24,10 +24,12 @@ import com.health.dto.ProductDTO;
 		
 		
 
-		// 상세정보 num 으로 상품 조회
-		
-		public ProductDTO product(int prod_num)throws Exception;
+		public static int selectPrice(int prod_num) throws Exception {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 
+		public ProductDTO product(int prod_num)throws Exception;
 		
 		
 	}
