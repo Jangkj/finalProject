@@ -15,15 +15,10 @@ import com.health.service.ExercisetypeService;
 
 
 @SpringBootApplication
-@ComponentScan
-@ComponentScan(basePackageClasses = PtController.class)
-@ComponentScan(basePackageClasses = ExercisetypeDAO.class)
-@ComponentScan(basePackageClasses = ExercisetypeDTO.class)
-@ComponentScan(basePackageClasses = ExercisetypeService.class)
-@MapperScan(basePackageClasses = ExercisetypeDAO.class)
-@MapperScan(basePackageClasses = PtroutineDAO.class)
-@MapperScan(basePackageClasses = PtuserDAO.class)
-@MapperScan(basePackageClasses = PtroutineoneDAO.class)
+@ComponentScan(basePackages = {"com.health.controller"})
+@ComponentScan(basePackages = {"com.health.service"})
+@ComponentScan(basePackages = {"com.health.dto"})
+@MapperScan(basePackages = {"com.health.dao"})
 public class FinalprojectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FinalprojectApplication.class, args);

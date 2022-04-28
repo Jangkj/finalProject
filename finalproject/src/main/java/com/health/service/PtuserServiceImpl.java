@@ -19,12 +19,12 @@ public class PtuserServiceImpl implements PtuserService {
 		return dao.insertptuser(dto);
 	};
 	
-	public PtuserDTO ptuser(String m_mail){
-		return dao.ptuser(m_mail);
+	public PtuserDTO ptuser(int m_num){
+		return dao.ptuser(m_num);
 	};
 	
-	public int ptusercheck(String m_mail) {
-		return dao.ptusercheck(m_mail);
+	public int ptusercheck(int m_num) {
+		return dao.ptusercheck(m_num);
 	};
 	
 	public int updateuser(PtuserDTO dto) {

@@ -2,13 +2,12 @@ package com.health.dto;
 
 
 public class PtuserDTO{
-	int pu_num, pu_cm, pu_kg, pu_point, pu_target;
-	String m_mail;
+	int pu_num, pu_cm, pu_kg, pu_point, pu_target, m_num;	
 	
 	public PtuserDTO(){};
 	
-	public PtuserDTO(String m_mail, int pu_cm, int pu_kg, int pu_target){
-		this.m_mail = m_mail;
+	public PtuserDTO(int m_num, int pu_cm, int pu_kg, int pu_target){
+		this.m_num = m_num;
 		this.pu_cm = pu_cm;
 		this.pu_kg = pu_kg;
 		this.pu_target = pu_target;
@@ -46,12 +45,12 @@ public class PtuserDTO{
 		this.pu_point = pu_point;
 	}
 
-	public String getM_mail() {
-		return m_mail;
+	public int getM_num() {
+		return m_num;
 	}
 
-	public void setM_mail(String m_mail) {
-		this.m_mail = m_mail;
+	public void setM_num(int m_num) {
+		this.m_num = m_num;
 	}
 	public int getPu_target() {
 		return pu_target;
