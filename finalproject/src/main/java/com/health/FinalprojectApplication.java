@@ -5,15 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.health.controller.PtController;
-import com.health.dao.ExercisetypeDAO;
-import com.health.dao.PtroutineDAO;
-import com.health.dao.PtroutineoneDAO;
-import com.health.dao.PtuserDAO;
-import com.health.dto.ExercisetypeDTO;
-import com.health.service.ExercisetypeService;
-
-
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.health.controller"})
 @ComponentScan(basePackages = {"com.health.service"})
