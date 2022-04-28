@@ -107,7 +107,7 @@
                                     
                                     <div class="col d-grid">
                                     <input type="hidden" name=prod_num id="prod_num" value="${product.prod_num }"/>
-                                        <button type="button" class="btn btn-dark btn-lg" id="insertCart" 
+                                        <button type="button" style="width: 650px;" class="btn btn-dark btn-lg" id="insertCart" 
                                         >Add To Cart</button>
                                     </div>
                                 </div>
