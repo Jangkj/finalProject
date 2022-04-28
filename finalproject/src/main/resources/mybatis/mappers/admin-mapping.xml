@@ -4,29 +4,25 @@
   
 <mapper namespace="com.health.dao.AdminDAO">
 <insert id="insertProduct" parameterType="admindto">
-	insert into product_table (category_num, prod_title, prod_price ,prod_inventory, prod_img_name, prod_description, prod_fee, prod_large, prod_medium, prod_small, prod_view_count) 
-	values(#{category_num}, #{prod_title}, #{prod_price}, #{prod_inventory}, #{prod_img_name}, #{prod_description}, #{prod_fee}, #{prod_large}, #{prod_medium}, #{prod_small}, #{prod_view_count})
+	insert into product_table (category_num, prod_title, prod_price, prod_inventory, prod_img_name, prod_description_name) 
+	values(#{category_num}, #{prod_title}, #{prod_price}, #{prod_inventory}, #{prod_img_name}, #{prod_description_name})
 </insert>
 
 
-<!-- <insert id="insertProduct" parameterType="admindto"> -->
-<!-- 	insert into product_table -->
-<!-- 	values(#{p_num} ,#{category_num}, #{prod_title}, #{prod_price}, #{prod_inventory}, #{prod_img}, #{prod_description}, #{prod_fee}, #{prod_large}, #{prod_medium}, #{prod_small}, #{prod_view_count}) -->
-<!-- </insert> -->
+<update id="updateProduct" parameterType="admindto">
+	update product_table set category_num = #{category_num}, prod_title = #{prod_title}, prod_price=#{prod_price}, prod_inventory=#{prod_inventory}, prod_img_name=#{prod_img_name}, prod_description_name=#{prod_description_name} where prod_num=#{prod_num}
+</update>
+<delete id="deleteProduct" parameterType="admindto">
+	delete from product_table where prod_num=#{prod_num}
+</delete>
 
 
-<select id="productlist" resultType="admindto"><!-- mybatis-config.xml -->
-	select * from product_table;
+<select id="modifysetting" resultType="admindto" parameterType="int">
+	select * from product_table where prod_num=#{productnum}
 </select>
-
-<select id="product" resultType="admindto" parameterType="int">
-	select prod_num, prod_title from product_table where prod_num=#{prod_num}
-</select>
-
-
 
 	<select id="testlist" resultType="admindto">
-		select * from product_table order by prod_num limit #{pagenum}, #{contentnum}
+		select * from product_table order by category_num limit #{pagenum}, #{contentnum}
 	</select>
 
 	<select id="testlist2" resultType="admindto">
@@ -40,7 +36,5 @@
 		select count(*) from
 		product_table where category_num = #{categorynum}
 	</select>
-	<select id="categorylist" resultType="categorydto"><!-- mybatis-config.xml -->
-		select * from category_table;
-	</select>
+
 </mapper>

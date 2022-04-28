@@ -7,5 +7,7 @@
 <select id="categorylist" resultType="categorydto"><!-- mybatis-config.xml -->
 	select * from category_table;
 </select>
-
+<select id="categorylistnotall" resultType="categorydto"><!-- mybatis-config.xml -->
+	select * from category_table where category_num >= 1;
+</select>
 </mapper>

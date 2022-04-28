@@ -9,98 +9,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 </head>
 <body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Close Top Nav -->
-
-
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                멀티헬스
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admininsert">Admin</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-    <!-- Close Header -->
+ 
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -159,40 +70,65 @@
 
             <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul class="list-inline shop-top-menu pb-3 pt-1">
-                            <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3">상품 등록</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 pb-4">
-                        <div class="d-flex">
-                            <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                               
-	   					  <form action="admininsert" method="post" enctype="multipart/form-data">
+	   					  <form class="form-horizontal" action="admininsert" method="post" enctype="multipart/form-data">
 							 <input type=hidden name=p_num value=null><br>
-							 카테고리:&nbsp;<input type=text name=category_num ><br>
-							 타이틀:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_title ><br> 
-							 가격:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_price ><br>
-							 재고:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_inventory ><br>
-						 	 이미지:&nbsp;&nbsp;&nbsp;&nbsp;<input type=file name="prod_img" ><br>
-							 설명:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_description ><br>
-							 배송비:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_fee ><br>
-							 대분류:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_large ><br>
-							 중분류:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_medium ><br>
-							 소분류:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text name=prod_small ><br>
-							 뷰카운트:&nbsp;<input type=text name=prod_view_count ><br>
-							 <input type=submit value=상품등록  ><br>
+<!-- 							 <div class="form-group"> -->
+<!-- 							 	<label for="category_num" class="col-sm-2 control-label">카테고리</label> -->
+<!-- 							 	<div class="col-sm-10"> -->
+<!-- 							 		<input type=text class="form-control" id="category_num" name=category_num ><br> -->
+<!-- 							 	</div> -->
+<!-- 							 </div> -->
+							<div class="form-group">
+								<label for="category_num" class="col-sm-2 control-label">카테고리</label>
+								<div class="col-sm-10">
+									<select class="form-control" id="category_num"
+										name="category_num" onchange="chageLangSelect(1)">
+										<c:forEach items="${categorylist }" var="cdto"
+											varStatus="status">
+											<option value="${cdto.category_num}"
+												<c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<br> 
+							<div class="form-group">
+							 	<label for="prod_title" class="col-sm-2 control-label">타이틀</label>
+						 		<div class="col-sm-10">
+						 			<input type=text class="form-control" id=prod_title name=prod_title ><br> 
+						 		</div>
+							 </div>
+							 <div class="form-group">
+							 	<label for="prod_price" class="col-sm-2 control-label">가격</label>
+						 		<div class="col-sm-10">
+						 			<input type=text class="form-control" id=prod_price name=prod_price ><br>
+						 		</div>
+						 	 </div>
+							 <div class="form-group">
+							 	<label for="prod_inventory" class="col-sm-2 control-label">재고</label>
+						 		<div class="col-sm-10">
+						 			<input type=text class="form-control" id=prod_inventory name=prod_inventory ><br>
+						 		</div>
+						 	 </div>
+							 <div class="form-group">
+							 	<label for="prod_img" class="col-sm-2 control-label">이미지</label>
+						 		<div class="col-sm-10">
+					 	 			<input type=file class="form-control" id=prod_img name="prod_img" ><br>
+					 	 		</div>
+					 	 	 </div>
+						 	 <div class="form-group">
+						 	 	<label for="prod_description" class="col-sm-2 control-label">설명</label>
+					 	 		<div class="col-sm-10">
+						 			<input type=file class="form-control" id=prod_description name=prod_description ><br>
+						 		</div>
+							 </div>
+							 <div class="form-group">
+							 	<div class="col-sm-offset-2 col-sm-10">
+							 		<button type=submit class="btn btn-primary">상품 등록</button>
+							 	</div>
+							 </div>
 						</form>
                     </div>
 
@@ -297,12 +233,5 @@
 
     </footer>
     <!-- End Footer -->
-    <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
 </body>
 </html>
