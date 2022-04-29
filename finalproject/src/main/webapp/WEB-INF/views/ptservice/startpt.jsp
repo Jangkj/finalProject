@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MultiHealth</title>
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>MultiHealth</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -58,7 +58,7 @@
                 	</div>
                 	<div class="col-md-3">
 	                	<a class="btn btn-dark btn-lg px-3 text-light" onclick="location.href='ptmain';">취소하기</a>
-						<a class="btn btn-dark btn-lg px-3 text-light finish_btn" style='display:none; width:100px; margin-left:20px; float:left;' id="p-${pick[0].pr_num}" href="ptmain">완료하기</a>
+						<a class="btn btn-dark btn-lg px-3 text-light finish_btn" style='display:none; float:left;' id="p-${pick[0].pr_num}" href="ptmain">완료하기</a>
                 	</div>
                  </div>        
             </div>

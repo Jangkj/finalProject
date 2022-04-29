@@ -293,7 +293,7 @@ public class PtController {
 		workout.setPu_num(pu_num);
 		workout.setWorkout_time(datetime);
 		workout.setPr_info(pr_info);
-		if(oneweek>6 &&  point==0) {
+		if(oneweek>=6 &&  point==0) {
 			workout.setWorkout_point(50);
 			workoutservice.insertworkout(workout);
 			ptuserservice.updatepoint(pu_num);

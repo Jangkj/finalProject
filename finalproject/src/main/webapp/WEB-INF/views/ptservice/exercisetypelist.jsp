@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MultiHealth</title>
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>MultiHealth</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -81,7 +81,7 @@
 		                                </div>
 		                            </div>
 		                            <div class="card-body click" id="${dto.et_ename}">
-		                                <a href="shop-single.html" class="h3 text-decoration-none">${dto.et_name}</a>
+		                                <a href="#" class="h3 text-decoration-none">${dto.et_name}</a>
 		                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
 		                                    <li><fmt:formatNumber type="number" pattern="###,###,###,###,###,###" value="${dto.et_met*user_kg*dto.et_time/60}"/>kcal</li>
 		                                    <li>${dto.et_time} 분</li>

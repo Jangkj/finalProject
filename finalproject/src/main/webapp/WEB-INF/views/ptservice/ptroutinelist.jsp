@@ -6,22 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MultiHealth</title>
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>MultiHealth</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="<%=request.getContextPath() %>/resources/image/x-icon" href="<%=request.getContextPath() %>/resources/img/favicon.ico">
-
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
 </head>
 <body>
  <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
